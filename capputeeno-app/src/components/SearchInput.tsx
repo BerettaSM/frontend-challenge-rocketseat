@@ -30,7 +30,7 @@ export function SearchInput({ placeholder, onSearch }: SearchInput) {
             <Input placeholder={placeholder} ref={inputRef} />
             <SubmitButton>
                 <SearchIcon />
-                <VisuallyHidden>Search</VisuallyHidden>
+                <VisuallyHidden>Procurar</VisuallyHidden>
             </SubmitButton>
         </Wrapper>
     );
