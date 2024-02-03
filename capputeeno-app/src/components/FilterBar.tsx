@@ -2,12 +2,13 @@
 
 import styled from 'styled-components';
 
-import { FilterByType } from '.';
+import { FilterByType, FilterByPriority } from '.';
 
 export function FilterBar() {
     return (
         <Wrapper>
             <FilterByType />
+            <FilterByPriority />
         </Wrapper>
     );
 }
