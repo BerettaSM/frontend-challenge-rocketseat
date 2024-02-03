@@ -1,10 +1,7 @@
-'use client';
-
 import React from 'react';
-import { ComponentPropsWithRef } from 'react';
 import styled from 'styled-components';
 
-interface InputProps extends ComponentPropsWithRef<'input'> {}
+interface InputProps extends React.ComponentPropsWithRef<'input'> {}
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     function Input(props, ref) {

@@ -1,10 +1,6 @@
-'use client';
-
 import styled from 'styled-components';
 
-import { Logo } from './Logo';
-import { MaxWidthWrapper } from './MaxWidthWrapper';
-import { SearchInput } from './SearchInput';
+import { CartButton, Logo, MaxWidthWrapper, SearchInput } from '.';
 
 export function MainHeader() {
     function handleSearch(searchTerm: string) {
@@ -20,6 +16,7 @@ export function MainHeader() {
                     placeholder="Procurando por algo específico?"
                     onSearch={handleSearch}
                 />
+                <CartButton>Hello?</CartButton>
             </Wrapper>
         </MaxWidthWrapper>
     );
