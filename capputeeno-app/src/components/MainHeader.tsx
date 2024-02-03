@@ -16,7 +16,7 @@ export function MainHeader() {
                     placeholder="Procurando por algo específico?"
                     onSearch={handleSearch}
                 />
-                <CartButton>Hello?</CartButton>
+                <CartButton />
             </Wrapper>
         </MaxWidthWrapper>
     );
@@ -24,8 +24,11 @@ export function MainHeader() {
 
 const Wrapper = styled.header`
     display: flex;
+    align-items: center;
+    gap: 24px;
+    height: 100%;
 
-    & :first-child {
+    & > :first-child {
         margin-right: auto;
     }
 `;

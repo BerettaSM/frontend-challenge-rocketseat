@@ -4,11 +4,15 @@ import { CartIcon } from './icons';
 import { VisuallyHidden } from '.';
 
 export function CartButton() {
+
+    const items = 2;
+    const cartStatus = items > 0 ? `${items} items selecionados` : 'vazio';
+
     return (
         <Wrapper>
             <CartIcon />
-            <VisuallyHidden>Your Cart</VisuallyHidden>
-            <ItemCounter>2</ItemCounter>
+            <VisuallyHidden>Seu carrinho - ${cartStatus}</VisuallyHidden>
+            <ItemCounter role='presentation'>{items}</ItemCounter>
         </Wrapper>
     );
 }
