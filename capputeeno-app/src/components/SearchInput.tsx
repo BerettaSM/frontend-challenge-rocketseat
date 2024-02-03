@@ -36,13 +36,16 @@ export function SearchInput({ placeholder, onSearch }: SearchInput) {
 }
 
 const Wrapper = styled.form`
-    background-color: inherit;
+    background-color: var(--bg-secondary);
+    border-radius: var(--border-radius);
+    height: ${42 / 16}rem;
     max-width: 352px;
     position: relative;
     width: 100%;
 
     & input {
         padding-inline-end: 56px;
+        height: 100%;
         width: 100%;
     }
 `;
@@ -54,5 +57,5 @@ const SubmitButton = styled.button`
     padding: 0;
     position: absolute;
     right: 16px;
-    top: 9px;
+    top: 8px;
 `;

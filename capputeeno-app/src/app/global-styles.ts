@@ -43,7 +43,7 @@ export const GlobalStyles = createGlobalStyle`
     /* Tokens */
 
     :root {
-        --border-radius: 12px;
+        --border-radius: 8px;
         --logo-color: #5D5D6D;
         --bg-secondary: #F3F5F6;
         --bg-primary: #F0F0F5;
