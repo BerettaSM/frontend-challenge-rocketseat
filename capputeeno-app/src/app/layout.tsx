@@ -1,10 +1,22 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Saira } from 'next/font/google';
 
 import { StyledComponentsRegistry } from '@/lib/registry';
 import { GlobalStyles } from './global-styles';
 
-const inter = Inter({ subsets: ['latin'] });
+const saira = Saira({
+    subsets: ['latin'],
+    weight: ['300', '400', '500', '600'],
+});
+
+/*
+For the header
+
+const sairaStencilOne = Saira_Stencil_One({
+    subsets: ['latin'],
+    weight: ['400'],
+});
+*/
 
 export const metadata: Metadata = {
     title: 'Capputeeno',
@@ -18,7 +30,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={inter.className}>
+            <body className={saira.className}>
                 <StyledComponentsRegistry>
                     <GlobalStyles />
                     {children}
