@@ -2,20 +2,10 @@
 
 import styled from "styled-components";
 
-import { MainHeader } from "@/components";
+import { MaxWidthWrapper } from "@/components";
 
 export default function Home() {
     return (
-        <Wrapper>
-            <MainHeader />
-        </Wrapper>
+        <MaxWidthWrapper>Home</MaxWidthWrapper>
     );
 }
-
-const Wrapper = styled.div`
-    display: grid;
-    grid-template-areas:
-        'HEADER'
-        'MAIN';
-    grid-template-rows: ${80 / 16}rem 1fr;
-`;

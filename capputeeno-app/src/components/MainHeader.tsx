@@ -1,3 +1,5 @@
+'use client';
+
 import styled from 'styled-components';
 
 import { CartButton, Logo, MaxWidthWrapper, SearchInput } from '.';
@@ -5,30 +7,35 @@ import { CartButton, Logo, MaxWidthWrapper, SearchInput } from '.';
 export function MainHeader() {
     function handleSearch(searchTerm: string) {
         // handle search
-        
     }
 
     return (
-        <MaxWidthWrapper>
-            <Wrapper>
+        <Wrapper>
+            <MaxWidthWrapper>
                 <Logo href="/">Capputeeno</Logo>
                 <SearchInput
                     placeholder="Procurando por algo específico?"
                     onSearch={handleSearch}
                 />
                 <CartButton />
-            </Wrapper>
-        </MaxWidthWrapper>
+            </MaxWidthWrapper>
+        </Wrapper>
     );
 }
 
 const Wrapper = styled.header`
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    height: 100%;
+    background-color: #fff;
+    width: 100%;
 
     & > :first-child {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        height: 100%;
         margin-right: auto;
+
+        & > :first-child {
+            margin-right: auto;
+        }
     }
 `;

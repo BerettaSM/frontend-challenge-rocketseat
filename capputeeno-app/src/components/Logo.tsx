@@ -1,3 +1,5 @@
+'use client';
+
 import styled from 'styled-components';
 import Link, { LinkProps } from 'next/link';
 import { Saira_Stencil_One } from 'next/font/google';

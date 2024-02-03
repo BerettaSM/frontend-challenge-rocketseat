@@ -1,14 +1,8 @@
+'use client';
+
 import styled from 'styled-components';
 
-interface VisuallyHidddenProps {
-    children: React.ReactNode;
-}
-
-export function VisuallyHidden({ children }: VisuallyHidddenProps) {
-    return <Wrapper>{children}</Wrapper>;
-}
-
-const Wrapper = styled.div`
+export const VisuallyHidden = styled.div`
     position: absolute;
     overflow: hidden;
     clip: rect(0 0 0 0);

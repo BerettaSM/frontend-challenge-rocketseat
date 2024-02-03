@@ -57,5 +57,4 @@ export const GlobalStyles = createGlobalStyle`
         --border-color: #A8A8B3;
         --success-color: #51B853;
     }
-
 `;

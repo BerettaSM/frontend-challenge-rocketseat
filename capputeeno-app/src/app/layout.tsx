@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { Saira } from 'next/font/google';
 
-import { StyledComponentsRegistry } from '@/lib/registry';
-import { GlobalStyles } from './global-styles';
+import { DefaultProviders } from '@/context';
+import { MainAppWrapper, MainHeader } from '@/components';
 
 const saira = Saira({
     subsets: ['latin'],
@@ -22,10 +22,12 @@ export default function RootLayout({
     return (
         <html lang="pt-br">
             <body className={saira.className}>
-                <StyledComponentsRegistry>
-                    <GlobalStyles />
-                    {children}
-                </StyledComponentsRegistry>
+                <DefaultProviders>
+                    <MainAppWrapper>
+                        <MainHeader />
+                        {children}
+                    </MainAppWrapper>
+                </DefaultProviders>
             </body>
         </html>
     );
