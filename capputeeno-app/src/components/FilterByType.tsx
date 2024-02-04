@@ -4,21 +4,24 @@ import styled from 'styled-components';
 
 import { FilterType as Filter } from './FilterType';
 import { FilterTypes } from '@/types/enums';
+import { useFilter } from '@/hooks';
+import React from 'react';
 
 export function FilterByType() {
+    const { type, setType } = useFilter();
+
     const filters = Object.values(FilterTypes);
 
     function handleClick(filterType: FilterTypes) {
-        alert(filterType);
+        setType(filterType);
     }
 
     return (
         <Wrapper>
-            {filters.map((filter, index) => (
+            {filters.map((filter) => (
                 <Filter
                     key={filter}
-                    // TODO: Properly wire isSelected logic
-                    isSelected={index === 0}
+                    isSelected={filter === type}
                     onClick={() => handleClick(filter)}
                 >
                     {filter}
