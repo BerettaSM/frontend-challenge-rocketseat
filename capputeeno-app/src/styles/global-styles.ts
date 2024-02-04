@@ -45,6 +45,7 @@ export const GlobalStyles = createGlobalStyle`
     :root {
         --border-radius: 8px;
         --logo-color: #5D5D6D;
+        --brand-color: #115D8C;
         --bg-secondary: #F3F5F6;
         --bg-primary: #F0F0F5;
         --text-dark: #737380;
@@ -53,6 +54,7 @@ export const GlobalStyles = createGlobalStyle`
         --delete-color: #DE3838; 
         --orange-low: #FFA585;
         --shapes: #DCE2E6;
+        --shapes-light: #F5F5FA;
         --secondary-text: #617480;
         --border-color: #A8A8B3;
         --success-color: #51B853;
