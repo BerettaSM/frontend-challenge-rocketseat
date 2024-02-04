@@ -1,7 +1,8 @@
 'use client';
 
-import { StyledComponentsRegistry } from "@/lib/registry";
-import { GlobalStyles } from "@/styles/global-styles";
+import { GlobalStyles } from '@/styles/global-styles';
+import { StyledComponentsRegistry } from '@/lib/registry';
+import { FilterContextProvider } from './FilterContextProvider';
 
 interface DefaultProvidersProps {
     children: React.ReactNode;
@@ -9,9 +10,11 @@ interface DefaultProvidersProps {
 
 export function DefaultProviders({ children }: DefaultProvidersProps) {
     return (
-        <StyledComponentsRegistry>
-            <GlobalStyles />
-            {children}
-        </StyledComponentsRegistry>
+        <FilterContextProvider>
+            <StyledComponentsRegistry>
+                <GlobalStyles />
+                {children}
+            </StyledComponentsRegistry>
+        </FilterContextProvider>
     );
 }
