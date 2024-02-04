@@ -4,8 +4,21 @@ import styled from 'styled-components';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 import { ChevronIcon } from './icons';
+import { PriorityType } from '@/types/enums';
+import { useFilter } from '@/hooks';
+import React from 'react';
 
 export function FilterByPriority() {
+    const { priority, setPriority } = useFilter();
+    const priorities = Object.values(PriorityType);
+
+    function handlePriorityChange(newPriority: PriorityType) {
+        if (priority === newPriority) {
+            return;
+        }
+        setPriority(newPriority);
+    }
+
     return (
         <DropdownMenu.Root>
             <DropdownMenu.Trigger asChild>
@@ -15,16 +28,15 @@ export function FilterByPriority() {
             </DropdownMenu.Trigger>
 
             <DropdownMenu.Portal>
-                <DropdownContent align='end'>
-
-                    <DropdownItem>Novidades</DropdownItem>
-
-                    <DropdownItem>Preço: Maior - menor</DropdownItem>
-
-                    <DropdownItem>Preço: Menor - maior</DropdownItem>
-
-                    <DropdownItem>Mais vendidos</DropdownItem>
-
+                <DropdownContent align="end">
+                    {priorities.map((priority) => (
+                        <DropdownItem
+                            key={priority}
+                            onClick={() => handlePriorityChange(priority)}
+                        >
+                            {priority}
+                        </DropdownItem>
+                    ))}
                 </DropdownContent>
             </DropdownMenu.Portal>
         </DropdownMenu.Root>
@@ -47,7 +59,7 @@ const DropdownContent = styled(DropdownMenu.Content)`
     background-color: #fff;
     padding: 12px 16px;
     width: 176px;
-`
+`;
 
 const DropdownItem = styled(DropdownMenu.Item)`
     cursor: pointer;
