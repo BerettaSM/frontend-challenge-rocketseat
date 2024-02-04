@@ -7,5 +7,6 @@ export * from './Logo';
 export * from './MainAppWrapper';
 export * from './MainHeader';
 export * from './MaxWidthWrapper';
+export * from './Pagination';
 export * from './SearchInput';
 export * from './VisuallyHidden';
