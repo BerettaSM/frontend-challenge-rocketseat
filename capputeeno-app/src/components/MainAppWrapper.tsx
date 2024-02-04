@@ -9,5 +9,5 @@ export const MainAppWrapper = styled.div`
         'HEADER'
         'MAIN';
     grid-template-rows: ${80 / 16}rem 1fr;
-    height: 100%;
+    min-height: 100%;
 `;
