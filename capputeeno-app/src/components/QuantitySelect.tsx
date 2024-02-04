@@ -22,9 +22,9 @@ export function QuantitySelect({
 
     return (
         <Wrapper>
-            <Select onChange={handleChange}>
+            <Select onChange={handleChange} defaultValue={selectedValue}>
                 {values.map((value) => (
-                    <option key={value} selected={value === selectedValue}>
+                    <option key={value}>
                         {value}
                     </option>
                 ))}
