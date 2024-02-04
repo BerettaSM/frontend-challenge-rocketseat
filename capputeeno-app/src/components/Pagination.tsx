@@ -78,7 +78,6 @@ const Wrapper = styled.ul`
     display: flex;
     gap: 2px;
     list-style: none;
-    margin-block-start: 24px;
     padding: 0;
 
     & :first-child {

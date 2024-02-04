@@ -11,4 +11,5 @@ export * from './Pagination';
 export * from './ProductItem';
 export * from './ProductList';
 export * from './SearchInput';
+export * from './Spacer';
 export * from './VisuallyHidden';
