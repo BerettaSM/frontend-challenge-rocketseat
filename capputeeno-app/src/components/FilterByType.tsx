@@ -8,11 +8,15 @@ import { useFilter } from '@/hooks';
 import React from 'react';
 
 export function FilterByType() {
-    const { type, setType } = useFilter();
+    const { type, setType, setCurrentPage } = useFilter();
 
     const filters = Object.values(FilterTypes);
 
     function handleClick(filterType: FilterTypes) {
+        if(type === filterType) {
+            return;
+        }
+        setCurrentPage(1);
         setType(filterType);
     }
 

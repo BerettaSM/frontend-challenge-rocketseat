@@ -9,13 +9,14 @@ import { useFilter } from '@/hooks';
 import React from 'react';
 
 export function FilterByPriority() {
-    const { priority, setPriority } = useFilter();
+    const { priority, setPriority, setCurrentPage } = useFilter();
     const priorities = Object.values(PriorityType);
 
     function handlePriorityChange(newPriority: PriorityType) {
         if (priority === newPriority) {
             return;
         }
+        setCurrentPage(1);
         setPriority(newPriority);
     }
 

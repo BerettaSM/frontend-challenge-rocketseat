@@ -7,12 +7,13 @@ import { useFilter } from '@/hooks';
 import React from 'react';
 
 export function MainHeader() {
-    const { searchTerm, setSearchTerm } = useFilter();
+    const { searchTerm, setSearchTerm, setCurrentPage } = useFilter();
 
     function handleSearch(newSearchTerm: string) {
         if (searchTerm === newSearchTerm) {
             return;
         }
+        setCurrentPage(1);
         setSearchTerm(newSearchTerm);
     }
 
