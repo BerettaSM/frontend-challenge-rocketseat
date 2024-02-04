@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Saira } from 'next/font/google';
 
 import { MainAppWrapper } from './MainAppWrapper';
-import { DefaultProviders } from '@/context';
+import { DefaultProviders } from '@/providers';
 import { MainHeader } from '@/components';
 
 const saira = Saira({
