@@ -3,25 +3,30 @@
 import styled from 'styled-components';
 
 import { ProductItem } from '.';
-
-import { range } from '@/utils/helpers';
+import { useProducts } from '@/hooks';
 
 export function ProductList() {
-    return(
+    const { products, isLoading, isError, error } = useProducts();
+
+    return (
         <Wrapper>
-            
-            {range(10).map(i => (
-                <ProductItem
-                    key={i}
-                    id='1'
-                    title='Caneca de cerâmica rústica'
-                    price={4780}
-                    imageUrl='https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-05.jpg'
-                />
-            ))}
+
+            {!isLoading && !isError && products !== undefined && (
+                <>
+                    {products.map(({ id, name, price_in_cents, image_url }) => (
+                        <ProductItem
+                            key={id}
+                            id={id}
+                            title={name}
+                            priceInCents={price_in_cents}
+                            imageUrl={image_url}
+                        />
+                    ))}
+                </>
+            )}
 
         </Wrapper>
-    )
+    );
 }
 
 const Wrapper = styled.section`
