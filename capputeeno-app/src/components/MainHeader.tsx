@@ -3,10 +3,17 @@
 import styled from 'styled-components';
 
 import { CartButton, Logo, MaxWidthWrapper, SearchInput } from '.';
+import { useFilter } from '@/hooks';
+import React from 'react';
 
 export function MainHeader() {
-    function handleSearch(searchTerm: string) {
-        // handle search
+    const { searchTerm, setSearchTerm } = useFilter();
+
+    function handleSearch(newSearchTerm: string) {
+        if (searchTerm === newSearchTerm) {
+            return;
+        }
+        setSearchTerm(newSearchTerm);
     }
 
     return (
