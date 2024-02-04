@@ -16,13 +16,14 @@ export function ProductItem({ id, title, imageUrl, price }: ProductItemProps) {
 
     return (
         <Wrapper>
-            <Image
-                src={imageUrl}
-                height={300}
-                width={256}
-                quality={100}
-                alt='some img'
-            />
+            <div>
+                <Image
+                    src={imageUrl}
+                    fill={true}
+                    quality={100}
+                    alt='some img'
+                />
+            </div>
             <div>
                 <h2>{title}</h2>
                 <hr />
@@ -36,9 +37,15 @@ const Wrapper = styled.article`
     background-color: #fff;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
     overflow: hidden;
-    width: fit-content;
 
-    & div {
+    height: 378px;
+
+    & div:first-of-type {
+        position: relative;
+        height: 300px;
+    }
+
+    & div:last-of-type {
         padding: 8px 12px;
     }
 

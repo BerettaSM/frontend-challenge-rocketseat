@@ -26,7 +26,7 @@ export function ProductList() {
 
 const Wrapper = styled.section`
     display: grid;
-    grid-template-columns: repeat(auto-fill, 256px);
+    grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
     grid-auto-rows: auto;
     justify-content: space-evenly;
     gap: 32px 24px;
