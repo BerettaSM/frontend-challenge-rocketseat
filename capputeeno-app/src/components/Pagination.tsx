@@ -12,17 +12,27 @@ interface PaginationProps {
     currentPage: number;
     totalPages: number;
     maxShownButtons?: number;
+    onChange(page: number): void;
 }
 
 export function Pagination({
     currentPage,
     totalPages,
     maxShownButtons = 5,
+    onChange,
 }: PaginationProps) {
     if (currentPage < 1 || currentPage > totalPages) {
         throw new RangeError(
             `currentPage expected to be in inclusive range (1, ${totalPages}). Received: ${currentPage}.`
         );
+    }
+
+    function handlePageChange(page: number) {
+        if (page < 1 || page > totalPages) {
+            alert(`Invalid page: ${page}.`);
+            return;
+        }
+        onChange(page);
     }
 
     let firstShownPage = Math.max(
@@ -45,13 +55,20 @@ export function Pagination({
 
     return (
         <Wrapper>
-            {pages.map((page, index) => (
-                <PaginationButton isSelected={index === 0} key={page}>
+            {pages.map((page) => (
+                <PaginationButton
+                    isSelected={page === currentPage}
+                    key={page}
+                    onClick={() => handlePageChange(page)}
+                >
                     <VisuallyHidden>Página</VisuallyHidden> {page}
                 </PaginationButton>
             ))}
 
-            <PaginationButton>
+            <PaginationButton
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+            >
                 <ChevronIcon
                     style={{
                         transform: 'rotate(90deg)',
@@ -61,7 +78,10 @@ export function Pagination({
                 <VisuallyHidden>Voltar página</VisuallyHidden>
             </PaginationButton>
 
-            <PaginationButton>
+            <PaginationButton
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+            >
                 <ChevronIcon
                     style={{
                         transform: 'rotate(270deg)',
