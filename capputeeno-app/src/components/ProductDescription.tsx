@@ -81,7 +81,9 @@ const Details = styled.div`
     flex: 1;
 
     & h3 {
+        color: var(--text-dark);
         font-weight: 500;
+        text-transform: uppercase;
     }
 `;
 
