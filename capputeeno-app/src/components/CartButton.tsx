@@ -29,7 +29,7 @@ const Wrapper = styled.button`
     justify-content: center;
     position: relative;
     height: 42px;
-    width: 42px;
+    min-width: 42px;
 `;
 
 const ItemCounter = styled.span`
