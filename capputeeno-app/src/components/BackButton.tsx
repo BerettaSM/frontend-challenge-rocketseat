@@ -1,12 +1,23 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
 
 import { BackIcon } from './icons';
 
-export function BackButton() {
+interface BackButtonProps {
+    href?: string;
+}
+
+export function BackButton({ href = '/' }: BackButtonProps) {
+    const router = useRouter();
+
+    function handleClick() {
+        router.push(href);
+    }
+
     return (
-        <Wrapper>
+        <Wrapper onClick={handleClick}>
             <BackIcon /> Voltar
         </Wrapper>
     );
