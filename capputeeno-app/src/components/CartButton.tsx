@@ -1,17 +1,24 @@
 'use client';
 
 import styled from 'styled-components';
+import { useRouter } from 'next/navigation';
 
 import { CartIcon } from './icons';
 import { VisuallyHidden } from '.';
 
 export function CartButton() {
 
+    const router = useRouter();
+
+    function handleNavigate() {
+        router.push('/cart');
+    }
+
     const items = 2;
     const cartStatus = items > 0 ? `${items} items selecionados` : 'vazio';
 
     return (
-        <Wrapper>
+        <Wrapper onClick={handleNavigate}>
             <CartIcon />
             <VisuallyHidden>Seu carrinho - ${cartStatus}</VisuallyHidden>
             <ItemCounter role='presentation'>{items}</ItemCounter>
