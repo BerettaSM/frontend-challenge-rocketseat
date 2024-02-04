@@ -3,7 +3,7 @@
 import styled from 'styled-components';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
-import { ChevronIcon } from './icons/ChevronIcon';
+import { ChevronIcon } from './icons';
 
 export function FilterByPriority() {
     return (

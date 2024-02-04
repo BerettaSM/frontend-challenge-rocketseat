@@ -3,7 +3,7 @@
 import styled from 'styled-components';
 
 import { PaginationButton } from './PaginationButton';
-import { ChevronIcon } from './icons/ChevronIcon';
+import { ChevronIcon } from './icons';
 import { VisuallyHidden } from '.';
 
 import { range } from '@/utils/helpers';
