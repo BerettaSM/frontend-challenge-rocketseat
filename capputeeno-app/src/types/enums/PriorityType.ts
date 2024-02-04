@@ -1,6 +1,6 @@
 export enum PriorityType {
-    NEW,
-    POPULARITY,
-    PRICE_INCREASE,
-    PRICE_DECREASE,
+    NEW = 'Novidades',
+    POPULARITY = 'Mais vendidos',
+    PRICE_INCREASE = 'Preço: Menor - maior',
+    PRICE_DECREASE = 'Preço: Maior - menor',
 }
