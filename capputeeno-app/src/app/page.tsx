@@ -1,7 +1,7 @@
 'use client';
 
 import { MaxWidthWrapper } from "@/components";
-import { FilterBar, Pagination } from "@/components";
+import { FilterBar, Pagination, ProductList } from "@/components";
 
 export default function Home() {
     return (
@@ -12,6 +12,7 @@ export default function Home() {
                 totalPages={10}
                 maxShownButtons={5}
             />
+            <ProductList />
         </MaxWidthWrapper>
     );
 }
