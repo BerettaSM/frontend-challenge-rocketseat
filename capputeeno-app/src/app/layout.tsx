@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import { Saira } from 'next/font/google';
 
+import { MainAppWrapper } from './MainAppWrapper';
 import { DefaultProviders } from '@/context';
-import { MainAppWrapper, MainHeader } from '@/components';
+import { MainHeader } from '@/components';
 
 const saira = Saira({
     subsets: ['latin'],
