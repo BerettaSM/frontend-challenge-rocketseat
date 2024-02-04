@@ -13,6 +13,7 @@ export function FilterType({ children, isSelected = false, ...delegated }: Filte
         <Wrapper $isSelected={isSelected} {...delegated}>
             <button type='button'>
                 {children}
+                {isSelected && <BoldedText role='presentation'>{children}</BoldedText>}
                 {isSelected && <SelectionHighlight />}
             </button>
         </Wrapper>
@@ -29,13 +30,29 @@ const Wrapper = styled.li<{ $isSelected: boolean }>`
         cursor: pointer;
         color: ${({ $isSelected }) => $isSelected ? 'var(--text-dark-2)' : 'var(--text-dark)'};
         display: block;
-        font-weight: ${({ $isSelected }) => $isSelected && '600'};
         text-transform: uppercase;
         height: 100%;
         outline-offset: 4px;
         padding: 0;
+        position: relative;
         width: 100%;
     }
+`;
+
+/*
+    The sole purpose of the following element
+    is to avoid layout shift when changing
+    changing fonts weights.
+*/
+const BoldedText = styled.span`
+    display: block;
+    text-transform: inherit;
+    font-weight: 600;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 2px;
+    left: 0px;
 `;
 
 const SelectionHighlight = styled.div`
