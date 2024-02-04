@@ -23,6 +23,6 @@ export function MaxWidthWrapper({
 const Wrapper = styled.div<{ $maxwidth: number; $padding: number }>`
     margin-inline: auto;
     width: 100%;
-    max-width: ${(p) => `${(p.$maxwidth - p.$padding * 2) / 16}rem`};
+    max-width: ${(p) => `${(p.$maxwidth + p.$padding * 2) / 16}rem`};
     padding-inline: ${(p) => p.$padding}px;
 `;
