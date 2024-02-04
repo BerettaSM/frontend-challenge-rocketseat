@@ -1,5 +1,6 @@
 export * from './BackButton';
 export * from './CartButton';
+export * from './CartItemList';
 export * from './FilterBar';
 export * from './FilterByType';
 export * from './FilterByPriority';
@@ -7,6 +8,7 @@ export * from './Input';
 export * from './Logo';
 export * from './MainHeader';
 export * from './MaxWidthWrapper';
+export * from './OrderSummary';
 export * from './Pagination';
 export * from './ProductDescription';
 export * from './ProductItem';

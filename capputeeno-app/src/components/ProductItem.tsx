@@ -20,7 +20,7 @@ export function ProductItem({ id, title, imageUrl, price }: ProductItemProps) {
                     src={imageUrl}
                     fill={true}
                     quality={100}
-                    alt="some img"
+                    alt={title}
                 />
             </ImageContainer>
             <ProductDetails>
