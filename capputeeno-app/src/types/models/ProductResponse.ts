@@ -5,3 +5,9 @@ export interface ProductsResponse {
         allProducts: Product[];
     };
 }
+
+export interface ProductResponse {
+    data: {
+        Product: Product;
+    };
+}
