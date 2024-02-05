@@ -8,7 +8,7 @@ import { useFilter } from '@/hooks';
 import React from 'react';
 
 export function FilterByType() {
-    const { type, setType, setCurrentPage } = useFilter();
+    const { type, setType, setCurrentPage, setSearchTerm } = useFilter();
 
     const filters = Object.values(FilterTypes);
 
@@ -18,6 +18,7 @@ export function FilterByType() {
         }
         setCurrentPage(1);
         setType(filterType);
+        setSearchTerm('');
     }
 
     return (
