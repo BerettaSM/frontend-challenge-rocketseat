@@ -11,6 +11,17 @@ export function getCategoryByType(type: FilterTypes) {
     }
 }
 
+export function getTypeByCategory(category: string) {
+    switch (category) {
+        case 'mugs':
+            return FilterTypes.MUGS;
+        case 't-shirts':
+            return FilterTypes.SHIRTS;
+        default:
+            return FilterTypes.ALL;
+    }
+}
+
 export function getFieldByPriority(priority: PriorityType) {
     switch (priority) {
         case PriorityType.NEW:
