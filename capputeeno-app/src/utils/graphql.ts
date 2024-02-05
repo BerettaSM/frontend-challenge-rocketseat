@@ -71,6 +71,7 @@ export function createQueryById(id: string) {
     return `
         query {
             Product(id: "${id}"){
+                id
                 name
                 description
                 category
