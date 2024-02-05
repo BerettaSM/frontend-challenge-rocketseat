@@ -93,7 +93,7 @@ const ProductTitle = styled.h2`
     width: fit-content;
 `;
 
-const ProductPrice = styled.p`
+const ProductPrice = styled.span`
     position: relative;
     display: block;
     color: var(--shapes-dark);
