@@ -21,15 +21,20 @@ export function ProductItem({
     const formattedPrice = formatCurrency(priceInCents / 100);
 
     return (
-        <Wrapper>
-            <Link href={`/products/${id}`}>
+        <Link
+            href={`/products/${id}`}
+            style={{
+                textDecoration: 'none',
+            }}
+        >
+            <Wrapper>
                 <ImageContainer>
                     <Image
                         src={imageUrl}
                         fill={true}
                         quality={100}
                         priority
-                        sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         alt={title}
                     />
                 </ImageContainer>
@@ -38,8 +43,8 @@ export function ProductItem({
                     <Separator />
                     <ProductPrice>{formattedPrice}</ProductPrice>
                 </ProductDetails>
-            </Link>
-        </Wrapper>
+            </Wrapper>
+        </Link>
     );
 }
 
@@ -48,10 +53,6 @@ const Wrapper = styled.article`
     border-radius: var(--border-radius) var(--border-radius) 0 0;
     overflow: hidden;
     height: 378px;
-
-    & a {
-        text-decoration: none;
-    }
 `;
 
 const ImageContainer = styled.div`
