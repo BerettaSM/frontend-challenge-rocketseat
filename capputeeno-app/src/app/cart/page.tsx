@@ -14,6 +14,7 @@ import { formatCurrency } from '@/utils/helpers';
 
 export default function CartPage() {
     const { subtotal, quantity } = useCart();
+    const formattedSubtotal = formatCurrency(subtotal / 100)
 
     return (
         <MaxWidthWrapper>
@@ -26,7 +27,7 @@ export default function CartPage() {
                     <CartTotal>
                         Total ({quantity}{' '}
                         {quantity !== 1 ? 'produtos' : 'produto'}){' '}
-                        <span>{formatCurrency(subtotal)}</span>
+                        <span>{formattedSubtotal}</span>
                     </CartTotal>
                     <Spacer axis="vertical" size={24} />
                     <CartItemList />
@@ -43,14 +44,13 @@ export default function CartPage() {
 
 const Wrapper = styled.section`
     display: flex;
-    margin-block-start: 24px;
+    margin-block: 24px 32px;
     gap: 32px;
 
-    --full-size-with-header: calc(100% - 5rem - 24px);
-    height: var(--full-size-with-header);
 
     & > :last-child {
         flex: 1;
+        height: 700px;
     }
 `;
 
