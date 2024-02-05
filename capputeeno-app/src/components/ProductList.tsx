@@ -1,30 +1,27 @@
 'use client';
 
+import React from 'react';
 import styled from 'styled-components';
 
 import { ProductItem } from '.';
-import { useProducts } from '@/hooks';
+import { Product } from '@/types/models';
 
-export function ProductList() {
-    const { products, isLoading, isError, error } = useProducts();
+interface ProductListProps {
+    products: Product[];
+}
 
+export function ProductList({ products }: ProductListProps) {
     return (
         <Wrapper>
-
-            {!isLoading && !isError && products !== undefined && (
-                <>
-                    {products.map(({ id, name, price_in_cents, image_url }) => (
-                        <ProductItem
-                            key={id}
-                            id={id}
-                            title={name}
-                            priceInCents={price_in_cents}
-                            imageUrl={image_url}
-                        />
-                    ))}
-                </>
-            )}
-
+            {products.map(({ id, name, price_in_cents, image_url }) => (
+                <ProductItem
+                    key={id}
+                    id={id}
+                    title={name}
+                    priceInCents={price_in_cents}
+                    imageUrl={image_url}
+                />
+            ))}
         </Wrapper>
     );
 }
