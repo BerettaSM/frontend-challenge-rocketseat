@@ -1,4 +1,7 @@
+'use client';
+
 import { BackButton, MaxWidthWrapper, ProductDescription, Spacer } from '@/components';
+import { useProduct } from '@/hooks';
 
 interface ProductPageProps {
     params: {
@@ -7,6 +10,9 @@ interface ProductPageProps {
 }
 
 export default function ProductPage({ params: { id } }: ProductPageProps) {
+
+    const { product } = useProduct(id);
+
     return (
         <MaxWidthWrapper>
             <Spacer axis='vertical' size={24} />
@@ -14,9 +20,9 @@ export default function ProductPage({ params: { id } }: ProductPageProps) {
             <BackButton />
 
             <Spacer axis='vertical' size={22} />
-
-            <ProductDescription id={id} />
-
+            
+            {product !== undefined && <ProductDescription product={product} />}
+            
         </MaxWidthWrapper>
     );
 }
