@@ -4,16 +4,17 @@ import styled from 'styled-components';
 
 import { CartButton, Logo, MaxWidthWrapper, SearchInput } from '.';
 import { useFilter } from '@/hooks';
-import React from 'react';
+import { FilterTypes } from '@/types/enums';
 
 export function MainHeader() {
-    const { searchTerm, setSearchTerm, setCurrentPage } = useFilter();
+    const { searchTerm, setSearchTerm, setCurrentPage, setType } = useFilter();
 
     function handleSearch(newSearchTerm: string) {
         if (searchTerm === newSearchTerm) {
             return;
         }
         setCurrentPage(1);
+        setType(FilterTypes.ALL);
         setSearchTerm(newSearchTerm);
     }
 
