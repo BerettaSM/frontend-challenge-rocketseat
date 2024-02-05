@@ -16,25 +16,29 @@ export function OrderSummary({ onOrder }: OrderSummaryProps) {
     const { deliveryFee, subtotal } = useCart()
     const total = subtotal + deliveryFee;
 
+    const formattedSubtotal = formatCurrency(subtotal / 100);
+    const formattedDeliveryFee = formatCurrency(deliveryFee / 100);
+    const formattedTotal = formatCurrency(total / 100);
+
     return (
         <Wrapper>
             <Title>Resumo do pedido</Title>
             <Spacer axis="vertical" size={30} />
             <SummaryWrapper>
                 <span>Subtotal</span>
-                <span>{formatCurrency(subtotal)}</span>
+                <span>{formattedSubtotal}</span>
             </SummaryWrapper>
             <Spacer axis="vertical" size={12} />
             <SummaryWrapper>
                 <span>Entrega</span>
-                <span>{formatCurrency(deliveryFee)}</span>
+                <span>{formattedDeliveryFee}</span>
             </SummaryWrapper>
             <Spacer axis="vertical" size={12} />
             <SummarySeparator />
             <Spacer axis="vertical" size={8} />
-            <SummaryWrapper>
+            <SummaryWrapper $isBold>
                 <span>Total</span>
-                <span>{formatCurrency(total)}</span>
+                <span>{formattedTotal}</span>
             </SummaryWrapper>
             <Spacer axis="vertical" size={40} />
             <PlaceOrderButton onClick={onOrder}>
@@ -50,6 +54,7 @@ export function OrderSummary({ onOrder }: OrderSummaryProps) {
 
 const Wrapper = styled.div`
     background-color: #fff;
+    border-radius: var(--border-radius);
     display: flex;
     flex-direction: column;
     padding: 16px 24px 24px;
@@ -77,11 +82,12 @@ const Title = styled.h3`
     line-height: 30px;
 `;
 
-const SummaryWrapper = styled.p`
+const SummaryWrapper = styled.p<{ $isBold?: boolean; }>`
     color: var(--text-dark-2);
     display: flex;
     justify-content: space-between;
     line-height: 24px;
+    font-weight: ${({ $isBold }) => $isBold && '600'};
 `;
 
 const SummarySeparator = styled.hr`
