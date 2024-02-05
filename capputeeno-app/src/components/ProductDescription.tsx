@@ -7,13 +7,25 @@ import { CartIcon } from './icons';
 import { Product } from '@/types/models';
 import { formatCurrency } from '@/utils/helpers';
 import { getTypeByCategory } from '@/utils/graphql';
+import { useCart } from '@/hooks';
 
 interface ProductDescriptionProps {
     product: Product;
 }
 
 export function ProductDescription({ product }: ProductDescriptionProps) {
-    const { id, category, description, name, price_in_cents, image_url } = product;
+    const { addProduct } = useCart();
+    const { category, description, name, price_in_cents, image_url } = product;
+
+    function handleAddToCart() {
+        try {
+            addProduct(product);
+        } catch (err) {
+            if (err instanceof Error) {
+                alert(err.message);
+            }
+        }
+    }
 
     const formattedPrice = formatCurrency(price_in_cents / 100);
 
@@ -26,7 +38,7 @@ export function ProductDescription({ product }: ProductDescriptionProps) {
                     alt={name}
                     quality={100}
                     priority
-                    sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
             </ImageContainer>
 
@@ -56,7 +68,7 @@ export function ProductDescription({ product }: ProductDescriptionProps) {
 
                 <Description>{description}</Description>
 
-                <AddToCartButton>
+                <AddToCartButton onClick={handleAddToCart}>
                     <CartIcon />
                     Adicionar ao carrinho
                 </AddToCartButton>
