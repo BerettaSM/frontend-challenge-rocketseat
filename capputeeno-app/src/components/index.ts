@@ -14,5 +14,6 @@ export * from './ProductDescription';
 export * from './ProductItem';
 export * from './ProductList';
 export * from './SearchInput';
+export * from './SkeletonHelper';
 export * from './Spacer';
 export * from './VisuallyHidden';

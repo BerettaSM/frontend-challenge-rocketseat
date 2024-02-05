@@ -5,6 +5,7 @@ import {
     MaxWidthWrapper,
     Pagination,
     ProductList,
+    SkeletonProductList,
     Spacer,
 } from '@/components';
 import { useFilter, useProducts } from '@/hooks';
@@ -22,6 +23,13 @@ export default function Home() {
             <Spacer axis="vertical" size={32} />
             <FilterBar />
             <Spacer axis="vertical" size={24} />
+
+            {isLoading && (
+                <>
+                    <Spacer axis="vertical" size={64} />
+                    <SkeletonProductList />
+                </>
+            )}
 
             {!isLoading && !isError && !!products && (
                 <>

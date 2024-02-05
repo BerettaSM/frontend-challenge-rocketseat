@@ -3,6 +3,8 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 import Link from 'next/link';
+
+import { Skeleton } from '.';
 import { formatCurrency } from '@/utils/helpers';
 
 interface ProductItemProps {
@@ -10,6 +12,8 @@ interface ProductItemProps {
     title: string;
     imageUrl: string;
     priceInCents: number;
+    href: string;
+    isSkeleton?: boolean;
 }
 
 export function ProductItem({
@@ -17,31 +21,43 @@ export function ProductItem({
     title,
     imageUrl,
     priceInCents,
+    href,
+    isSkeleton = false,
 }: ProductItemProps) {
     const formattedPrice = formatCurrency(priceInCents / 100);
 
     return (
         <Link
-            href={`/products/${id}`}
+            href={href}
             style={{
                 textDecoration: 'none',
             }}
         >
             <Wrapper>
                 <ImageContainer>
-                    <Image
-                        src={imageUrl}
-                        fill={true}
-                        quality={100}
-                        priority
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        alt={title}
-                    />
+                    {isSkeleton ? (
+                        <Skeleton />
+                    ) : (
+                        <Image
+                            src={imageUrl}
+                            fill={true}
+                            quality={100}
+                            priority
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            alt={title}
+                        />
+                    )}
                 </ImageContainer>
                 <ProductDetails>
-                    <ProductTitle>{title}</ProductTitle>
+                    <ProductTitle>
+                        {title}
+                        {isSkeleton && <Skeleton />}
+                    </ProductTitle>
                     <Separator />
-                    <ProductPrice>{formattedPrice}</ProductPrice>
+                    <ProductPrice>
+                        {formattedPrice}
+                        {isSkeleton && <Skeleton />}
+                    </ProductPrice>
                 </ProductDetails>
             </Wrapper>
         </Link>
@@ -58,6 +74,7 @@ const Wrapper = styled.article`
 const ImageContainer = styled.div`
     position: relative;
     height: 300px;
+    overflow: hidden;
 
     & img {
         object-fit: cover;
@@ -69,15 +86,20 @@ const ProductDetails = styled.div`
 `;
 
 const ProductTitle = styled.h2`
+    position: relative;
     color: var(--text-dark-2);
     font-size: 1rem;
     font-weight: 300;
+    width: fit-content;
 `;
 
 const ProductPrice = styled.p`
+    position: relative;
+    display: block;
     color: var(--shapes-dark);
     font-size: ${14 / 16}rem;
     font-weight: bold;
+    width: fit-content;
 `;
 
 const Separator = styled.hr`
