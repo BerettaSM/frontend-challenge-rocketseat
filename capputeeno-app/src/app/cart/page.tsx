@@ -32,11 +32,7 @@ export default function CartPage() {
                     <Spacer axis="vertical" size={24} />
                     <CartItemList />
                 </CartView>
-                <OrderSummary
-                    onOrder={() => {
-                        alert('Order placed. :)');
-                    }}
-                />
+                <OrderSummary />
             </Wrapper>
         </MaxWidthWrapper>
     );

@@ -10,6 +10,7 @@ interface CartContext {
     addProduct(product: Product): void;
     removeProduct(id: string): void;
     changeProductQuantity(id: string, newQuantity: number): void;
+    placeOrder(): void;
 }
 
 export const CartContext = React.createContext({} as CartContext);

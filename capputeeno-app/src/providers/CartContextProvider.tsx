@@ -62,6 +62,18 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         updateLocalStorage(newStorage);
     }
 
+    function clearCart() {
+        updateLocalStorage([]);
+    }
+
+    function placeOrder() {
+        if(quantity < 1) {
+            throw new Error('O carrinho está vazio.')
+        }
+
+        clearCart();
+    }
+
     const context = {
         products: storage,
         quantity,
@@ -71,6 +83,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         addProduct,
         removeProduct,
         changeProductQuantity,
+        placeOrder
     };
 
     return (

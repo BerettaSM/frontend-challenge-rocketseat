@@ -8,12 +8,20 @@ import { Spacer } from '.';
 import { formatCurrency } from '@/utils/helpers';
 import { useCart } from '@/hooks/use-cart';
 
-interface OrderSummaryProps {
-    onOrder: () => void;
-}
+export function OrderSummary() {
+    const { deliveryFee, subtotal, placeOrder } = useCart();
 
-export function OrderSummary({ onOrder }: OrderSummaryProps) {
-    const { deliveryFee, subtotal } = useCart()
+    function handlePlaceOrder() {
+        try {
+            placeOrder();
+        }
+        catch(err) {
+            if(err instanceof Error) {
+                alert(err.message);
+            }
+        }
+    }
+
     const total = subtotal + deliveryFee;
 
     const formattedSubtotal = formatCurrency(subtotal / 100);
@@ -41,7 +49,7 @@ export function OrderSummary({ onOrder }: OrderSummaryProps) {
                 <span>{formattedTotal}</span>
             </SummaryWrapper>
             <Spacer axis="vertical" size={40} />
-            <PlaceOrderButton onClick={onOrder}>
+            <PlaceOrderButton onClick={handlePlaceOrder}>
                 Finalizar a compra
             </PlaceOrderButton>
             <Link href={'#'}>Ajuda</Link>
