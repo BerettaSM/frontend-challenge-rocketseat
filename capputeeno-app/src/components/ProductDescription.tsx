@@ -8,18 +8,21 @@ import { Product } from '@/types/models';
 import { formatCurrency } from '@/utils/helpers';
 import { getTypeByCategory } from '@/utils/graphql';
 import { useCart } from '@/hooks';
+import { useRouter } from 'next/navigation';
 
 interface ProductDescriptionProps {
     product: Product;
 }
 
 export function ProductDescription({ product }: ProductDescriptionProps) {
+    const router = useRouter();
     const { addProduct } = useCart();
     const { category, description, name, price_in_cents, image_url } = product;
 
     function handleAddToCart() {
         try {
             addProduct(product);
+            router.push('/cart');
         } catch (err) {
             if (err instanceof Error) {
                 alert(err.message);
