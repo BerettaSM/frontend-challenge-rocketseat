@@ -1,6 +1,6 @@
 import { Product } from '.';
 
-export interface ProductResponse {
+export interface ProductsResponse {
     data: {
         allProducts: Product[];
     };

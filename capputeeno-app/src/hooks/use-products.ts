@@ -4,11 +4,11 @@ import { useQuery } from '@tanstack/react-query';
 import { api } from '@/api';
 import { useFilter } from '.';
 import { createQuery } from '@/utils/graphql';
-import { ProductResponse } from '@/types/models';
+import { ProductsResponse } from '@/types/models';
 
 const PRODUCTS_PER_PAGE = 12;
 
-function fetcher(query: string): AxiosPromise<ProductResponse> {
+function fetcher(query: string): AxiosPromise<ProductsResponse> {
     return api.post('/', { query });
 }
 
