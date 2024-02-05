@@ -5,23 +5,23 @@ import { useRouter } from 'next/navigation';
 
 import { CartIcon } from './icons';
 import { VisuallyHidden } from '.';
+import { useCart } from '@/hooks';
 
 export function CartButton() {
-
     const router = useRouter();
+    const { quantity } = useCart();
 
     function handleNavigate() {
         router.push('/cart');
     }
 
-    const items = 2;
-    const cartStatus = items > 0 ? `${items} items selecionados` : 'vazio';
+    const cartStatus = quantity > 0 ? `${quantity} items selecionados` : 'vazio';
 
     return (
         <Wrapper onClick={handleNavigate}>
             <CartIcon />
             <VisuallyHidden>Seu carrinho - ${cartStatus}</VisuallyHidden>
-            <ItemCounter role='presentation'>{items}</ItemCounter>
+            <ItemCounter role='presentation'>{quantity}</ItemCounter>
         </Wrapper>
     );
 }
