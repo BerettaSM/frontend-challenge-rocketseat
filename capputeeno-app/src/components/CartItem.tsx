@@ -17,18 +17,17 @@ interface CartItemProps {
 export function CartItem({
     product: { name, image_url, price_in_cents, quantity, id, description },
 }: CartItemProps) {
-    const { removeProduct} = useCart();
-
-    const formattedPrice = formatCurrency(price_in_cents / 100);
+    const { changeProductQuantity, removeProduct } = useCart();
 
     function handleDelete() {
         removeProduct(id);
     }
-
+    
     function handleQuantityChange(newValue: number) {
-        // handle change
-        alert(`${name} quantity changed to ${newValue}`);
+        changeProductQuantity(id, newValue);
     }
+
+    const formattedPrice = formatCurrency(price_in_cents / 100);
 
     return (
         <Wrapper>
@@ -54,7 +53,7 @@ export function CartItem({
                 <Grouper>
                     <QuantitySelect
                         values={range(1, 6)}
-                        selectedValue={1}
+                        selectedValue={quantity}
                         onChange={handleQuantityChange}
                     />
                     <Price>{formattedPrice}</Price>
