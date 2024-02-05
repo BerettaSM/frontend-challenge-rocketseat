@@ -24,8 +24,17 @@ export function useProducts() {
     const filteredProducts = products?.filter((product) =>
         product.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
+    const totalPages = filteredProducts
+        ? Math.ceil(filteredProducts.length / 12)
+        : 1;
     const sliceStart = (currentPage - 1) * PRODUCTS_PER_PAGE;
     const sliceEnd = sliceStart + PRODUCTS_PER_PAGE;
     const slicedProducts = filteredProducts?.slice(sliceStart, sliceEnd);
-    return { products: slicedProducts, isLoading, isError, error };
+    return {
+        products: slicedProducts,
+        totalPages: totalPages < 1 ? 1 : totalPages,
+        isLoading,
+        isError,
+        error,
+    };
 }
