@@ -4,28 +4,42 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import { Spacer } from '.';
 import { CartIcon } from './icons';
+import { Product } from '@/types/models';
+import { formatCurrency } from '@/utils/helpers';
+import { getTypeByCategory } from '@/utils/graphql';
 
-export function ProductDescription({ id }: { id: string }) {
+interface ProductDescriptionProps {
+    product: Product;
+}
+
+export function ProductDescription({ product }: ProductDescriptionProps) {
+    const { id, category, description, name, price_in_cents, image_url } = product;
+
+    const formattedPrice = formatCurrency(price_in_cents / 100);
+
     return (
         <Wrapper>
             <ImageContainer>
                 <Image
-                    src="https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-05.jpg"
+                    src={image_url}
                     fill={true}
-                    alt="some alt"
+                    alt={name}
+                    quality={100}
+                    priority
+                    sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                 />
             </ImageContainer>
 
             <Details>
-                <Category>Caneca</Category>
+                <Category>{getTypeByCategory(category)}</Category>
 
                 <Spacer axis="vertical" size={12} />
 
-                <Title>Caneca de cerâmica rústica</Title>
+                <Title>{name}</Title>
 
                 <Spacer axis="vertical" size={4} />
 
-                <Price>R$ 40,00</Price>
+                <Price>{formattedPrice}</Price>
 
                 <Spacer axis="vertical" size={24} />
 
@@ -40,17 +54,12 @@ export function ProductDescription({ id }: { id: string }) {
 
                 <Spacer axis="vertical" size={8} />
 
-                <Description>
-                    Aqui vem um texto descritivo do produto, esta caixa de texto
-                    servirá apenas de exemplo para que simule algum texto que
-                    venha a ser inserido nesse campo, descrevendo tal produto.
-                </Description>
+                <Description>{description}</Description>
 
                 <AddToCartButton>
                     <CartIcon />
                     Adicionar ao carrinho
                 </AddToCartButton>
-                
             </Details>
         </Wrapper>
     );
