@@ -25,7 +25,7 @@ export function getFieldByPriority(priority: PriorityType) {
     }
 }
 
-export const createQuery = (type: FilterTypes, priority: PriorityType) => {
+export function createQuery(type: FilterTypes, priority: PriorityType) {
     if (type === FilterTypes.ALL && priority === PriorityType.POPULARITY)
         return `
             query {
@@ -55,3 +55,17 @@ export const createQuery = (type: FilterTypes, priority: PriorityType) => {
         }
     `;
 };
+
+export function createQueryById(id: string) {
+    return `
+        query {
+            Product(id: "${id}"){
+                name
+                description
+                category
+                price_in_cents
+                image_url
+            }
+        }
+    `
+}
