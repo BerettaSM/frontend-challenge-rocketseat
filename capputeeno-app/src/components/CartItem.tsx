@@ -8,6 +8,7 @@ import { QuantitySelect } from './QuantitySelect';
 import { range, formatCurrency } from '@/utils/helpers';
 import { VisuallyHidden } from '.';
 import { TrashIcon } from './icons';
+import { useCart } from '@/hooks';
 
 interface CartItemProps {
     product: ProductInCart;
@@ -16,11 +17,12 @@ interface CartItemProps {
 export function CartItem({
     product: { name, image_url, price_in_cents, quantity, id, description },
 }: CartItemProps) {
+    const { removeProduct} = useCart();
+
     const formattedPrice = formatCurrency(price_in_cents / 100);
 
-    function handleDelete(event: React.MouseEvent<HTMLButtonElement>) {
-        // handle delete
-        alert(`${name} deleted!`);
+    function handleDelete() {
+        removeProduct(id);
     }
 
     function handleQuantityChange(newValue: number) {
