@@ -17,9 +17,17 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     );
 
     const subtotal = storage.reduce(
-        (acc, product) => acc + product.price_in_cents,
+        (acc, product) => acc + product.price_in_cents * product.quantity,
         0
     );
+
+    const quantity = storage.reduce(
+        (acc, product) => acc + product.quantity,
+        0
+    );
+    
+    const deliveryFee =
+        storage.length === 0 || subtotal > 90000 ? 0 : DELIVERY_FEE;
 
     function addProduct(product: Product) {
         let productInCart = storage.find((p) => p.id === product.id);
@@ -54,11 +62,9 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         updateLocalStorage(newStorage);
     }
 
-    const deliveryFee = storage.length === 0 || subtotal > 90000 ? 0 : DELIVERY_FEE;
-
     const context = {
         products: storage,
-        quantity: storage.length,
+        quantity,
         subtotal,
         deliveryFee,
         singleProductLimit: SINGLE_PRODUCT_LIMIT,
