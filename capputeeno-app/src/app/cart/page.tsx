@@ -9,40 +9,29 @@ import {
     OrderSummary,
     Spacer,
 } from '@/components';
+import { useCart } from '@/hooks';
+import { formatCurrency } from '@/utils/helpers';
 
 export default function CartPage() {
+    const { subtotal, quantity } = useCart();
+
     return (
         <MaxWidthWrapper>
             <Wrapper>
                 <CartView>
                     <BackButton />
-
                     <Spacer axis="vertical" size={22} />
-
                     <CartTitle>Seu carrinho</CartTitle>
-
                     <Spacer axis="vertical" size={6} />
-
                     <CartTotal>
-                        Total (3 produtos) <span>R$ 161,00</span>
+                        Total ({quantity}{' '}
+                        {quantity !== 1 ? 'produtos' : 'produto'}){' '}
+                        <span>{formatCurrency(subtotal)}</span>
                     </CartTotal>
-
                     <Spacer axis="vertical" size={24} />
-
                     <CartItemList />
                 </CartView>
-
                 <OrderSummary
-                    summaries={[
-                        {
-                            description: 'Subtotal de produtos',
-                            valueInCents: 16100,
-                        },
-                        {
-                            description: 'Entrega',
-                            valueInCents: 4000,
-                        },
-                    ]}
                     onOrder={() => {
                         alert('Order placed. :)');
                     }}

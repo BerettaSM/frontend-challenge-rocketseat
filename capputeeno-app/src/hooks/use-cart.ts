@@ -9,7 +9,7 @@ export function useCart() {
         CART_KEY,
         []
     );
-
+    
     const subtotal = storage.reduce(
         (acc, product) => acc + product.price_in_cents,
         0

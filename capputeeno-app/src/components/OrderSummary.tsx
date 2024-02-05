@@ -6,58 +6,40 @@ import styled from 'styled-components';
 
 import { Spacer } from '.';
 import { formatCurrency } from '@/utils/helpers';
-
-interface SummaryData {
-    description: string;
-    valueInCents: number;
-}
+import { useCart } from '@/hooks/use-cart';
 
 interface OrderSummaryProps {
-    summaries: SummaryData[];
     onOrder: () => void;
 }
 
-export function OrderSummary({ onOrder, summaries = [] }: OrderSummaryProps) {
-    const total = summaries.reduce((acc, s) => acc + s.valueInCents, 0);
+export function OrderSummary({ onOrder }: OrderSummaryProps) {
+    const { deliveryFee, subtotal } = useCart()
+    const total = subtotal + deliveryFee;
 
     return (
         <Wrapper>
             <Title>Resumo do pedido</Title>
-
             <Spacer axis="vertical" size={30} />
-
-            {summaries.length > 0 && (
-                <>
-                    {summaries.map(({ description, valueInCents }) => (
-                        <React.Fragment key={description}>
-                            <Summary
-                                description={description}
-                                valueInCents={valueInCents}
-                            />
-                            <Spacer axis="vertical" size={12} />
-                        </React.Fragment>
-                    ))}
-
-                    <SummarySeparator />
-
-                    <Spacer axis="vertical" size={8} />
-                </>
-            )}
-
-            <Summary
-                description="Total"
-                valueInCents={total}
-                style={{
-                    fontWeight: '600',
-                }}
-            />
-
+            <SummaryWrapper>
+                <span>Subtotal</span>
+                <span>{formatCurrency(subtotal)}</span>
+            </SummaryWrapper>
+            <Spacer axis="vertical" size={12} />
+            <SummaryWrapper>
+                <span>Entrega</span>
+                <span>{formatCurrency(deliveryFee)}</span>
+            </SummaryWrapper>
+            <Spacer axis="vertical" size={12} />
+            <SummarySeparator />
+            <Spacer axis="vertical" size={8} />
+            <SummaryWrapper>
+                <span>Total</span>
+                <span>{formatCurrency(total)}</span>
+            </SummaryWrapper>
             <Spacer axis="vertical" size={40} />
-
             <PlaceOrderButton onClick={onOrder}>
                 Finalizar a compra
             </PlaceOrderButton>
-
             <Link href={'#'}>Ajuda</Link>
             <Link href={'#'}>Reembolsos</Link>
             <Link href={'#'}>Entregas e frete</Link>
@@ -94,19 +76,6 @@ const Title = styled.h3`
     text-transform: uppercase;
     line-height: 30px;
 `;
-
-type SummaryProps = SummaryData & React.ComponentProps<'p'>;
-
-function Summary({ description, valueInCents, ...delegated }: SummaryProps) {
-    const formattedValue = formatCurrency(valueInCents / 100);
-
-    return (
-        <SummaryWrapper {...delegated}>
-            <span>{description}</span>
-            <span>{formattedValue}</span>
-        </SummaryWrapper>
-    );
-}
 
 const SummaryWrapper = styled.p`
     color: var(--text-dark-2);
