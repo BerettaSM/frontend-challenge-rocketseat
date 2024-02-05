@@ -1,11 +1,12 @@
 'use client';
 
 import { FilterBar, MaxWidthWrapper, Pagination, ProductList, Spacer } from "@/components";
-import { useFilter } from "@/hooks";
+import { useFilter, useProducts } from "@/hooks";
 
 export default function Home() {
 
     const { currentPage, setCurrentPage } = useFilter();
+    const { totalPages } = useProducts();
 
     function handlePageChange(page: number) {
         setCurrentPage(page);
@@ -18,7 +19,7 @@ export default function Home() {
             <Spacer axis="vertical" size={24} />
             <Pagination
                 currentPage={currentPage}
-                totalPages={10}
+                totalPages={totalPages}
                 maxShownButtons={5}
                 onChange={handlePageChange}
             />
@@ -27,7 +28,7 @@ export default function Home() {
             <Spacer axis="vertical" size={74} />
             <Pagination
                 currentPage={currentPage}
-                totalPages={10}
+                totalPages={totalPages}
                 maxShownButtons={5}
                 onChange={handlePageChange}
             />
