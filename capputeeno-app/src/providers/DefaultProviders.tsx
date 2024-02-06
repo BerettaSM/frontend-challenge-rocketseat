@@ -6,6 +6,7 @@ import { GlobalStyles } from '@/styles/global-styles';
 import { StyledComponentsRegistry } from '@/lib/registry';
 import { FilterContextProvider } from './FilterContextProvider';
 import { CartContextProvider } from './CartContextProvider';
+import { MotionConfig } from 'framer-motion';
 
 interface DefaultProvidersProps {
     children: React.ReactNode;
@@ -17,12 +18,14 @@ export function DefaultProviders({ children }: DefaultProvidersProps) {
     return (
         <QueryClientProvider client={queryClient}>
             <CartContextProvider>
-            <FilterContextProvider>
-                <StyledComponentsRegistry>
-                    <GlobalStyles />
-                    {children}
-                </StyledComponentsRegistry>
-            </FilterContextProvider>
+                <FilterContextProvider>
+                    <StyledComponentsRegistry>
+                        <MotionConfig reducedMotion="user">
+                            <GlobalStyles />
+                            {children}
+                        </MotionConfig>
+                    </StyledComponentsRegistry>
+                </FilterContextProvider>
             </CartContextProvider>
         </QueryClientProvider>
     );
