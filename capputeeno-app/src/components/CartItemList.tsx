@@ -6,7 +6,6 @@ import { CartItem } from './CartItem';
 import { useCart } from '@/hooks';
 
 export function CartItemList() {
-
     const { products } = useCart();
 
     return <Wrapper>

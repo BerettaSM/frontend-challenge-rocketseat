@@ -1,7 +1,7 @@
 'use client';
 
-import Image from 'next/image';
 import styled from 'styled-components';
+import Image from 'next/image';
 
 import { ProductInCart } from '@/types/models';
 import { QuantitySelect } from './QuantitySelect';
@@ -22,7 +22,7 @@ export function CartItem({
     function handleDelete() {
         removeProduct(id);
     }
-    
+
     function handleQuantityChange(newValue: number) {
         changeProductQuantity(id, newValue);
     }

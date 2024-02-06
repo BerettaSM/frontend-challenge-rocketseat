@@ -1,7 +1,7 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
+import { useRouter } from 'next/navigation';
 
 import { BackIcon } from './icons';
 

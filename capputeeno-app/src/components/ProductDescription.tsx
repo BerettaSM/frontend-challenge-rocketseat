@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import styled from 'styled-components';
+
 import { Spacer } from '.';
 import { CartIcon } from './icons';
 import { Product } from '@/types/models';
@@ -47,30 +48,19 @@ export function ProductDescription({ product }: ProductDescriptionProps) {
 
             <Details>
                 <Category>{getTypeByCategory(category)}</Category>
-
                 <Spacer axis="vertical" size={12} />
-
                 <Title>{name}</Title>
-
                 <Spacer axis="vertical" size={4} />
-
                 <Price>{formattedPrice}</Price>
-
                 <Spacer axis="vertical" size={24} />
-
                 <Promotion>
                     *Frete de R$40,00 para todo o Brasil. Grátis para compras
                     acima de R$900,00.
                 </Promotion>
-
                 <Spacer axis="vertical" size={58} />
-
                 <h3>Descrição</h3>
-
                 <Spacer axis="vertical" size={8} />
-
                 <Description>{description}</Description>
-
                 <AddToCartButton onClick={handleAddToCart}>
                     <CartIcon />
                     Adicionar ao carrinho

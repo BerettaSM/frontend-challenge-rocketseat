@@ -1,12 +1,12 @@
 'use client';
 
+import React from 'react';
 import styled from 'styled-components';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 import { ChevronIcon } from './icons';
 import { PriorityType } from '@/types/enums';
 import { useFilter } from '@/hooks';
-import React from 'react';
 
 export function FilterByPriority() {
     const { priority, setPriority, setCurrentPage, setSearchTerm } = useFilter();

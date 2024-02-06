@@ -1,7 +1,7 @@
 'use client';
 
-import styled from 'styled-components';
 import React from 'react';
+import styled from 'styled-components';
 
 import { FilterType as Filter } from './FilterType';
 import { FilterTypes } from '@/types/enums';
