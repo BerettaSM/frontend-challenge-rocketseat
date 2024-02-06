@@ -1,13 +1,14 @@
 'use client';
 
 import styled from 'styled-components';
+import React from 'react';
 
 import { FilterType as Filter } from './FilterType';
 import { FilterTypes } from '@/types/enums';
 import { useFilter } from '@/hooks';
-import React from 'react';
 
 export function FilterByType() {
+    const layoutId = React.useId();
     const { type, setType, setCurrentPage, setSearchTerm } = useFilter();
 
     const filters = Object.values(FilterTypes);
@@ -28,6 +29,7 @@ export function FilterByType() {
                     key={filter}
                     isSelected={filter === type}
                     onClick={() => handleClick(filter)}
+                    layoutId={layoutId}
                 >
                     {filter}
                 </Filter>

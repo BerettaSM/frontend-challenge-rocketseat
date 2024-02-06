@@ -1,20 +1,22 @@
 'use client';
 
-import { ComponentProps } from 'react';
 import styled from 'styled-components';
+import { ComponentProps } from 'react';
+import { motion } from 'framer-motion';
 
 type FilterTypeProps = {
     children: React.ReactNode;
     isSelected?: boolean;
+    layoutId: string;
 } & ComponentProps<'li'>;
 
-export function FilterType({ children, isSelected = false, ...delegated }: FilterTypeProps) {
+export function FilterType({ children, layoutId, isSelected = false, ...delegated }: FilterTypeProps) {
     return (
         <Wrapper $isSelected={isSelected} {...delegated}>
             <button type='button'>
                 {children}
                 {isSelected && <BoldedText role='presentation'>{children}</BoldedText>}
-                {isSelected && <SelectionHighlight />}
+                {isSelected && <SelectionHighlight layoutId={`${layoutId}-bar`} />}
             </button>
         </Wrapper>
     );
@@ -55,7 +57,7 @@ const BoldedText = styled.span`
     left: 0px;
 `;
 
-const SelectionHighlight = styled.div`
+const SelectionHighlight = styled(motion.div)`
     background-color: var(--orange-low);
     bottom: -2px;
     position: absolute;
