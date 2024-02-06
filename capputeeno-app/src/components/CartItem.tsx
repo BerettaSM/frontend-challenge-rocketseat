@@ -17,7 +17,7 @@ interface CartItemProps {
 export function CartItem({
     product: { name, image_url, price_in_cents, quantity, id, description },
 }: CartItemProps) {
-    const { changeProductQuantity, removeProduct } = useCart();
+    const { changeProductQuantity, removeProduct, singleProductLimit } = useCart();
 
     function handleDelete() {
         removeProduct(id);
@@ -52,7 +52,7 @@ export function CartItem({
                 <Description>{description}</Description>
                 <Grouper>
                     <QuantitySelect
-                        values={range(1, 6)}
+                        values={range(1, singleProductLimit + 1)}
                         selectedValue={quantity}
                         onChange={handleQuantityChange}
                     />
