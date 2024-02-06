@@ -73,6 +73,7 @@ export function ProductDescription({ product }: ProductDescriptionProps) {
 const Wrapper = styled.section`
     display: flex;
     gap: 32px;
+    margin-block-end: 32px;
     min-height: 580px;
 
     @media (max-width: 40rem) {
