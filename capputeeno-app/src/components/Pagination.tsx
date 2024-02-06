@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import styled from 'styled-components';
 
 import { PaginationButton } from './PaginationButton';
@@ -21,6 +22,8 @@ export function Pagination({
     maxShownButtons = 5,
     onChange,
 }: PaginationProps) {
+    const layoutId = React.useId();
+
     if (currentPage < 1 || currentPage > totalPages) {
         throw new RangeError(
             `currentPage expected to be in inclusive range (1, ${totalPages}). Received: ${currentPage}.`
@@ -60,6 +63,7 @@ export function Pagination({
                     isSelected={page === currentPage}
                     key={page}
                     onClick={() => handlePageChange(page)}
+                    layoutId={layoutId}
                 >
                     <VisuallyHidden>Página</VisuallyHidden> {page}
                 </PaginationButton>
