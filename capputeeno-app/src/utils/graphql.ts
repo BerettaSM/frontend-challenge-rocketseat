@@ -36,7 +36,7 @@ export function getFieldByPriority(priority: PriorityType) {
     }
 }
 
-export function createQuery(type: FilterTypes, priority: PriorityType) {
+export function createQuery(type: FilterTypes, priority: PriorityType | null) {
     if (type === FilterTypes.ALL && priority === PriorityType.POPULARITY)
         return `
             query {
@@ -49,7 +49,7 @@ export function createQuery(type: FilterTypes, priority: PriorityType) {
             }
     `;
     const categoryFilter = getCategoryByType(type);
-    const { field, order } = getFieldByPriority(priority);
+    const { field, order } = getFieldByPriority(priority ?? PriorityType.POPULARITY);
     return `
         query {
             allProducts(
