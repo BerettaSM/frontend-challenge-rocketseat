@@ -14,6 +14,7 @@ export function OrderSummary() {
     function handlePlaceOrder() {
         try {
             placeOrder();
+            alert('Compra efetuada com sucesso! :)');
         }
         catch(err) {
             if(err instanceof Error) {
