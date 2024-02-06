@@ -21,7 +21,7 @@ export default function ProductPage({ params: { id } }: ProductPageProps) {
 
             <Spacer axis='vertical' size={22} />
             
-            {product !== undefined && <ProductDescription product={product} />}
+            {!!product && <ProductDescription product={product} />}
             
         </MaxWidthWrapper>
     );
