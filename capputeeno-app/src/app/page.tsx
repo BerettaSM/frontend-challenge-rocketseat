@@ -36,7 +36,6 @@ export default function Home() {
                     <Pagination
                         currentPage={currentPage}
                         totalPages={totalPages}
-                        maxShownButtons={5}
                         onChange={handlePageChange}
                     />
                     <Spacer axis="vertical" size={32} />
@@ -45,7 +44,6 @@ export default function Home() {
                     <Pagination
                         currentPage={currentPage}
                         totalPages={totalPages}
-                        maxShownButtons={5}
                         onChange={handlePageChange}
                     />
                     <Spacer axis="vertical" size={60} />

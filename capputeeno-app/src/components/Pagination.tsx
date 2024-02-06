@@ -7,19 +7,17 @@ import { PaginationButton } from './PaginationButton';
 import { ChevronIcon } from './icons';
 import { VisuallyHidden } from '.';
 
-import { range } from '@/utils/helpers';
+import { getPageNumbers } from '@/utils/helpers';
 
 interface PaginationProps {
     currentPage: number;
     totalPages: number;
-    maxShownButtons?: number;
     onChange(page: number): void;
 }
 
 export function Pagination({
     currentPage,
     totalPages,
-    maxShownButtons = 5,
     onChange,
 }: PaginationProps) {
     const layoutId = React.useId();
@@ -38,23 +36,7 @@ export function Pagination({
         onChange(page);
     }
 
-    let firstShownPage = Math.max(
-        1,
-        currentPage - Math.floor(maxShownButtons / 2)
-    );
-    const lastShownPage = Math.min(
-        totalPages + 1,
-        firstShownPage + maxShownButtons
-    );
-
-    while (
-        firstShownPage > 1 &&
-        lastShownPage - firstShownPage < maxShownButtons
-    ) {
-        firstShownPage--;
-    }
-
-    const pages = range(firstShownPage, lastShownPage);
+    const pages = getPageNumbers(currentPage, totalPages);
 
     return (
         <Wrapper>
