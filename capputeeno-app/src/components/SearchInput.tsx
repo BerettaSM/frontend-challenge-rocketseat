@@ -49,6 +49,11 @@ const Wrapper = styled.form`
         height: 100%;
         width: 100%;
     }
+
+    @media (max-width: 40rem) {
+        max-width: revert;
+        flex: 2;
+    }
 `;
 
 const SubmitButton = styled.button`

@@ -48,6 +48,10 @@ const Wrapper = styled.section`
         flex: 1;
         height: 700px;
     }
+
+    @media (max-width: 45rem) {
+        flex-direction: column-reverse;
+    }
 `;
 
 const CartView = styled.div`

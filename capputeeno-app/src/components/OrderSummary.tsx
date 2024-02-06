@@ -81,6 +81,10 @@ const Wrapper = styled.div`
         font-size: ${14 / 16}rem;
         text-transform: uppercase;
     }
+
+    @media (max-width: 45rem) {
+        padding-inline: 8px;
+    }
 `;
 
 const Title = styled.h3`
@@ -116,5 +120,9 @@ const PlaceOrderButton = styled.button`
     &:hover,
     &:active {
         filter: brightness(0.85);
+    }
+
+    @media (max-width: 45rem) {
+        margin-block-end: 16px;
     }
 `;

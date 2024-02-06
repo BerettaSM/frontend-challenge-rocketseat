@@ -74,6 +74,11 @@ const Wrapper = styled.section`
     display: flex;
     gap: 32px;
     min-height: 580px;
+
+    @media (max-width: 40rem) {
+        flex-direction: column;
+        height: calc(100% - 5rem);
+    }
 `;
 
 const ImageContainer = styled.div`
@@ -85,6 +90,10 @@ const ImageContainer = styled.div`
 
     & img {
         object-fit: cover;
+    }
+
+    @media (max-width: 40rem) {
+        flex: 1;
     }
 `;
 
@@ -98,6 +107,10 @@ const Details = styled.div`
         color: var(--text-dark);
         font-weight: 500;
         text-transform: uppercase;
+    }
+
+    @media (max-width: 40rem) {
+        flex: 2;
     }
 `;
 

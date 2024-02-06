@@ -15,13 +15,14 @@ export function CartButton() {
         router.push('/cart');
     }
 
-    const cartStatus = quantity > 0 ? `${quantity} items selecionados` : 'vazio';
+    const cartStatus =
+        quantity > 0 ? `${quantity} items selecionados` : 'vazio';
 
     return (
         <Wrapper onClick={handleNavigate}>
             <CartIcon />
             <VisuallyHidden>Seu carrinho - ${cartStatus}</VisuallyHidden>
-            <ItemCounter role='presentation'>{quantity}</ItemCounter>
+            <ItemCounter role="presentation">{quantity}</ItemCounter>
         </Wrapper>
     );
 }
@@ -37,6 +38,12 @@ const Wrapper = styled.button`
     position: relative;
     height: 42px;
     min-width: 42px;
+
+    @media (max-width: 40rem) {
+        position: absolute;
+        right: 16px;
+        top: 19px;
+    }
 `;
 
 const ItemCounter = styled.span`

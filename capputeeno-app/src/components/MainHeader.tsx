@@ -43,8 +43,9 @@ const Wrapper = styled.header`
         height: 100%;
         margin-right: auto;
 
-        & > :first-child {
-            margin-right: auto;
+        @media (max-width: 40rem) {
+            flex-direction: column;
+            padding-block-end: 16px;
         }
     }
 `;

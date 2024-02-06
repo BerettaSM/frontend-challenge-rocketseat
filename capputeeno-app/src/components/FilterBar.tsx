@@ -17,4 +17,8 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: 40rem) {
+        display: none;
+    }
 `;

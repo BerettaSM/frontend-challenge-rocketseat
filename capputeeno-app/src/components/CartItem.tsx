@@ -68,6 +68,10 @@ const Wrapper = styled.li`
     border-radius: var(--border-radius);
     display: flex;
     overflow: hidden;
+
+    @media (max-width: 35rem) {
+        flex-direction: column;
+    }
 `;
 
 const ImageContainer = styled.div`
@@ -79,6 +83,10 @@ const ImageContainer = styled.div`
     & img {
         object-fit: cover;
     }
+
+    @media (max-width: 35rem) {
+        width: 100%;
+    }
 `;
 
 const CartItemDescription = styled.div`
@@ -86,6 +94,10 @@ const CartItemDescription = styled.div`
     display: flex;
     flex-direction: column;
     padding: 16px 16px 24px 32px;
+
+    @media (max-width: 40rem) {
+        padding: 8px;
+    }
 `;
 
 const Title = styled.h4`
@@ -115,4 +127,5 @@ const DeleteButton = styled.button`
     border: none;
     cursor: pointer;
     padding: 0;
+    flex-shrink: 0;
 `;

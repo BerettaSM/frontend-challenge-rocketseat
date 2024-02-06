@@ -25,9 +25,18 @@ export function Logo({ children, ...delegated }: LogoProps) {
 
 const Wrapper = styled.div`
     color: var(--logo-color);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    height: 100%;
+    margin-right: auto;
 
     & a {
         text-decoration: none;
         color: inherit;
+    }
+
+    @media (max-width: 40rem) {
+        margin-block-start: 2px;
     }
 `;
