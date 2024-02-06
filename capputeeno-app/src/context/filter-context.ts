@@ -8,7 +8,7 @@ interface FilterContext {
     setCurrentPage(currentPage: number): void;
     type: FilterTypes;
     setType(type: FilterTypes): void;
-    priority: PriorityType;
+    priority: PriorityType | null;
     setPriority(priority: PriorityType): void;
 }
 

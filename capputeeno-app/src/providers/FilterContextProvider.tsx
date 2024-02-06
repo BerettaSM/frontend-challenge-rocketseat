@@ -15,7 +15,7 @@ export function FilterContextProvider({
     const [searchTerm, setSearchTerm] = React.useState('');
     const [currentPage, setCurrentPage] = React.useState(1);
     const [type, setType] = React.useState(FilterTypes.ALL);
-    const [priority, setPriority] = React.useState(PriorityType.POPULARITY);
+    const [priority, setPriority] = React.useState<PriorityType | null>(null);
 
     const context = {
         searchTerm,

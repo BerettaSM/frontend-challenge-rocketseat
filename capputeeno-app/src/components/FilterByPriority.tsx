@@ -25,7 +25,7 @@ export function FilterByPriority() {
         <DropdownMenu.Root>
             <DropdownMenu.Trigger asChild>
                 <DropdownButton aria-label="Escolher prioridade">
-                    Organizar por <ChevronIcon />
+                    {priority ?? 'Organizar por'} <ChevronIcon />
                 </DropdownButton>
             </DropdownMenu.Trigger>
 
