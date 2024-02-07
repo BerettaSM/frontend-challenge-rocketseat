@@ -78,6 +78,7 @@ const ImageContainer = styled.div`
     
     & img {
         object-fit: cover;
+        will-change: transform;
         transition: transform 400ms ease-out;
     }
 
