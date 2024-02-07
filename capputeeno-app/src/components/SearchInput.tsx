@@ -64,8 +64,8 @@ const SubmitButton = styled(BaseButton)`
     right: 16px;
     top: 8px;
 
-    &:hover,
-    &:active {
+    &:hover:not(:disabled),
+    &:active:not(:disabled) {
         filter: revert;
     }
 `;
