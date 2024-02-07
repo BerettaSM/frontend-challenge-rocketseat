@@ -8,6 +8,7 @@ export * from './Input';
 export * from './Logo';
 export * from './MainHeader';
 export * from './MaxWidthWrapper';
+export * from './Modal';
 export * from './OrderSummary';
 export * from './Pagination';
 export * from './ProductDescription';

@@ -1,10 +1,11 @@
 'use client';
 
+import React from 'react';
 import Image from 'next/image';
 import styled from 'styled-components';
 
-import { Spacer } from '.';
-import { CartIcon } from './icons';
+import { Spacer, Modal } from '.';
+import { BackIcon, CartIcon, CheckIcon } from './icons';
 import { Product } from '@/types/models';
 import { formatCurrency } from '@/utils/helpers';
 import { getTypeByCategory } from '@/utils/graphql';
@@ -17,18 +18,23 @@ interface ProductDescriptionProps {
 
 export function ProductDescription({ product }: ProductDescriptionProps) {
     const router = useRouter();
-    const { addProduct } = useCart();
+    const { addProduct, quantity } = useCart();
+    const [isModalOpen, setIsModalOpen] = React.useState(false);
     const { category, description, name, price_in_cents, image_url } = product;
 
     function handleAddToCart() {
         try {
             addProduct(product);
-            router.push('/cart');
+            setIsModalOpen(true);
         } catch (err) {
             if (err instanceof Error) {
                 alert(err.message);
             }
         }
+    }
+
+    function handleCloseModal() {
+        setIsModalOpen(false);
     }
 
     const formattedPrice = formatCurrency(price_in_cents / 100);
@@ -66,6 +72,36 @@ export function ProductDescription({ product }: ProductDescriptionProps) {
                     Adicionar ao carrinho
                 </AddToCartButton>
             </Details>
+
+            <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+                <Modal.Title>
+                    <CheckIcon style={{ color: 'var(--success-color)' }} />
+                    &nbsp; Um novo item foi adicionado no carrinho
+                </Modal.Title>
+                <Spacer axis="vertical" size={16} />
+                <Modal.Description>
+                    Você possui um total de <strong>{quantity}</strong> itens no
+                    carrinho.
+                </Modal.Description>
+                <Spacer axis="vertical" size={16} />
+                <Modal.Actions>
+                    <Modal.ActionButton
+                        style={{ backgroundColor: 'var(--brand-color)' }}
+                        onClick={() => router.push('/')}
+                    >
+                        <BackIcon />
+                        &nbsp; Continuar comprando
+                    </Modal.ActionButton>
+                    <Spacer axis="horizontal" size={32} />
+                    <Modal.ActionButton
+                        style={{ backgroundColor: 'var(--success-color)' }}
+                        onClick={() => router.push('/cart')}
+                    >
+                        <CartIcon />
+                        &nbsp; Ir para o carrinho
+                    </Modal.ActionButton>
+                </Modal.Actions>
+            </Modal>
         </Wrapper>
     );
 }
