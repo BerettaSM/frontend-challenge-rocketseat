@@ -3,6 +3,7 @@
 import styled from 'styled-components';
 import { ComponentProps } from 'react';
 import { motion } from 'framer-motion';
+import { BaseButton } from '.';
 
 type FilterTypeProps = {
     children: React.ReactNode;
@@ -12,33 +13,30 @@ type FilterTypeProps = {
 
 export function FilterType({ children, layoutId, isSelected = false, ...delegated }: FilterTypeProps) {
     return (
-        <Wrapper $isSelected={isSelected} {...delegated}>
-            <button type='button'>
+        <Wrapper {...delegated}>
+            <Button type='button' $isSelected={isSelected}>
                 {children}
                 {isSelected && <BoldedText role='presentation'>{children}</BoldedText>}
                 {isSelected && <SelectionHighlight layoutId={`${layoutId}-bar`} />}
-            </button>
+            </Button>
         </Wrapper>
     );
 }
 
-const Wrapper = styled.li<{ $isSelected: boolean }>`
+const Wrapper = styled.li`
     height: ${28 / 16}rem;
     position: relative;
-    
-    & button {
-        background-color: inherit;
-        border: none;
-        cursor: pointer;
-        color: ${({ $isSelected }) => $isSelected ? 'var(--text-dark-2)' : 'var(--text-dark)'};
-        display: block;
-        text-transform: uppercase;
-        height: 100%;
-        outline-offset: 4px;
-        padding: 0;
-        position: relative;
-        width: 100%;
-    }
+`;
+
+const Button = styled(BaseButton)<{ $isSelected: boolean }>`
+    background-color: inherit;
+    color: ${({ $isSelected }) => $isSelected ? 'var(--text-dark-2)' : 'var(--text-dark)'};
+    display: block;
+    text-transform: uppercase;
+    height: 100%;
+    outline-offset: 4px;
+    padding: 0;
+    position: relative;
 `;
 
 /*
@@ -60,6 +58,7 @@ const BoldedText = styled.span`
 const SelectionHighlight = styled(motion.div)`
     background-color: var(--orange-low);
     bottom: -2px;
+    border-radius: 20%;
     position: absolute;
     left: 0;
     right: 0;

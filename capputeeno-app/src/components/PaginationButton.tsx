@@ -2,12 +2,15 @@
 
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { BaseButton } from '.';
 
 type PaginationButtonProps = {
     isSelected?: boolean;
     children: React.ReactNode;
     layoutId?: string;
-} & React.ComponentProps<'button'>;
+    onClick?(): void;
+    disabled?: boolean;
+};
 
 export function PaginationButton({
     isSelected,
@@ -38,7 +41,7 @@ const Wrapper = styled.li`
     width: 32px;
 `;
 
-const Button = styled.button<{ $isSelected: boolean }>`
+const Button = styled(BaseButton)<{ $isSelected: boolean }>`
     background-color: var(--shapes);
     border: 2px solid transparent;
     border-radius: var(--border-radius);
