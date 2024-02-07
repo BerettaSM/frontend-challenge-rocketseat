@@ -38,12 +38,12 @@ const Wrapper = styled(Dialog.Root)`
 `;
 
 const fadeIn = keyframes`
-    0% {
+    from {
         backdrop-filter: blur(0px);
-        opacity: 0;
+        opacity: 1;
     }
-    100% {
-        backdrop-filter: blur(15px);
+    to {
+        backdrop-filter: blur(10px);
         opacity: 1;
     }
 `
@@ -52,7 +52,18 @@ const Backdrop = styled(Dialog.Overlay)`
     position: fixed;
     inset: 0;
     background: rgb(0 0 0 / 0.3);
-    animation: ${fadeIn} 1 1500ms ease-in-out forwards;
+    animation: ${fadeIn} 1 1000ms ease-in-out forwards;
+`;
+
+const slideDown = keyframes`
+    from {
+        transform: translateY(-30px) translate(-50%, -50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0px) translate(-50%, -50%);
+        opacity: 1;
+    }
 `;
 
 const Content = styled(Dialog.Content)`
@@ -64,6 +75,8 @@ const Content = styled(Dialog.Content)`
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    animation: ${slideDown} 1 500ms ease-out alternate backwards;
+    animation-delay: 750ms;
 
     & svg {
         flex-shrink: 0;
