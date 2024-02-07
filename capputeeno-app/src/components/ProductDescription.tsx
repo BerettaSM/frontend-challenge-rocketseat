@@ -154,6 +154,7 @@ const AddToCartButton = styled.button`
     gap: 12px;
     padding: 10px;
     margin-block-start: auto;
+    text-transform: uppercase;
     transition: filter 250ms linear;
 
     & svg path {

@@ -115,6 +115,7 @@ const PlaceOrderButton = styled.button`
     color: var(--shapes-light);
     cursor: pointer;
     padding: 10px;
+    text-transform: uppercase;
     transition: filter 250ms linear;
 
     &:hover,
