@@ -36,6 +36,11 @@ const Wrapper = styled.div`
         color: inherit;
     }
 
+    & h1 {
+        font-weight: 400;
+        text-transform: lowercase;
+    }
+
     @media (max-width: 40rem) {
         margin-block-start: 2px;
     }
