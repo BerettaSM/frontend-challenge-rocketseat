@@ -75,7 +75,7 @@ const resolvers = {
         allProducts(_: any, args: Args, __: any, ___: any) {
             const { sortField, sortOrder = 'DSC', filter } = args;
 
-            let products = allProducts;
+            let products = [...allProducts];
 
             if (typeof filter !== 'undefined') {
                 products = products.filter(
@@ -83,7 +83,7 @@ const resolvers = {
                 );
             }
 
-            return products.toSorted((p1, p2) =>
+            return products.sort((p1, p2) =>
                 compare(p1, p2, sortField, sortOrder)
             );
         },
