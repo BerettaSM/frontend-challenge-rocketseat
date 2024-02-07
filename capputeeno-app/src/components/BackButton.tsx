@@ -3,6 +3,7 @@
 import styled from 'styled-components';
 import { useRouter } from 'next/navigation';
 
+import { BaseButton } from '.';
 import { BackIcon } from './icons';
 
 interface BackButtonProps {
@@ -23,10 +24,9 @@ export function BackButton({ href = '/' }: BackButtonProps) {
     );
 }
 
-const Wrapper = styled.button`
+const Wrapper = styled(BaseButton)`
     color: var(--secondary-text);
-    cursor: pointer;
-    border: none;
+    border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;

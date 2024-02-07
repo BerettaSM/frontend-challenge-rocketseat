@@ -4,7 +4,7 @@ import styled, { keyframes} from 'styled-components';
 import * as Dialog from '@radix-ui/react-dialog';
 
 import { CloseIcon } from './icons';
-import { VisuallyHidden } from '.';
+import { BaseButton, VisuallyHidden } from '.';
 
 interface ModalProps {
     isOpen?: boolean;
@@ -99,52 +99,16 @@ const Actions = styled.div`
     justify-content: space-between;
 `;
 
-const bopAnimation = keyframes`
-    0% {
-        transform: translateY(0px);
-    }
-    20% {
-        transform: translateY(-1px);
-    }
-    21% {
-        transform: translateY(-1px) rotate(-10deg);
-    }
-    30% {
-        transform: translateY(-1px) rotate(13deg);
-    }
-    45% {
-        transform: translateY(-1px) rotate(-15deg);
-    }
-    75% {
-        transform: translateY(-1px) rotate(11deg); 
-    }
-    100% {
-        transform: translateY(0px) rotate(0deg); 
-    }
-`;
-
-const ActionButton = styled.button`
+const ActionButton = styled(BaseButton)`
     display: flex;
     align-items: center;
-    border: none;
+
     border-radius: 4px;
     padding: 6px 8px;
     color: var(--shapes-light);
-    cursor: pointer;
-    transition: filter 400ms ease-in-out;
-    will-change: filter;
 
     & svg path {
-        transform-origin: center;
         stroke: var(--shapes-light);
-    }
-
-    &:hover svg path {
-        animation: ${bopAnimation} 1 2000ms ease alternate forwards;
-    }
-
-    &:hover {
-        filter: brightness(0.85);
     }
 `;
 

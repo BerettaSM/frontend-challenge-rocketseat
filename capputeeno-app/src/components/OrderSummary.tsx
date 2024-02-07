@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import { Spacer } from '.';
+import { BaseButton, Spacer } from '.';
 import { formatCurrency } from '@/utils/helpers';
 import { useCart } from '@/hooks/use-cart';
 
@@ -80,6 +80,11 @@ const Wrapper = styled.div`
         color: var(--text-dark);
         font-size: ${14 / 16}rem;
         text-transform: uppercase;
+        transition: filter 200ms linear;
+
+        &:hover {
+            filter: brightness(.6);
+        }
     }
 
     @media (max-width: 45rem) {
@@ -108,15 +113,12 @@ const SummarySeparator = styled.hr`
     border-block-start: 1px solid var(--shapes);
 `;
 
-const PlaceOrderButton = styled.button`
+const PlaceOrderButton = styled(BaseButton)`
     background-color: var(--success-color);
-    border: none;
     border-radius: 4px;
     color: var(--shapes-light);
-    cursor: pointer;
     padding: 10px;
     text-transform: uppercase;
-    transition: filter 250ms linear;
 
     &:hover,
     &:active {

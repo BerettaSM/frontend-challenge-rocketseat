@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import styled from 'styled-components';
 
-import { Spacer, Modal } from '.';
+import { Spacer, Modal, BaseButton } from '.';
 import { BackIcon, CartIcon, CheckIcon } from './icons';
 import { Product } from '@/types/models';
 import { formatCurrency } from '@/utils/helpers';
@@ -179,25 +179,18 @@ const Description = styled.p`
     line-height: 24px;
 `;
 
-const AddToCartButton = styled.button`
+const AddToCartButton = styled(BaseButton)`
     background-color: var(--brand-color);
-    border: none;
     border-radius: 4px;
     color: var(--shapes-light);
-    cursor: pointer;
     display: flex;
     justify-content: center;
     gap: 12px;
     padding: 10px;
     margin-block-start: auto;
     text-transform: uppercase;
-    transition: filter 250ms linear;
 
     & svg path {
         stroke: var(--shapes-light);
-    }
-
-    &:hover {
-        filter: brightness(0.85);
     }
 `;

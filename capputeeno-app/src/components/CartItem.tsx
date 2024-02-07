@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { ProductInCart } from '@/types/models';
 import { QuantitySelect } from './QuantitySelect';
 import { range, formatCurrency } from '@/utils/helpers';
-import { VisuallyHidden } from '.';
+import { BaseButton, VisuallyHidden } from '.';
 import { TrashIcon } from './icons';
 import { useCart } from '@/hooks';
 
@@ -123,9 +123,13 @@ const Grouper = styled.div`
     align-items: baseline;
 `;
 
-const DeleteButton = styled.button`
-    border: none;
-    cursor: pointer;
+const DeleteButton = styled(BaseButton)`
     padding: 0;
     flex-shrink: 0;
+    background-color: inherit;
+    
+    &:hover,
+    &:active {
+        filter: revert;
+    }
 `;

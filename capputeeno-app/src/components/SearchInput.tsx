@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { Input } from './Input';
 import { SearchIcon } from './icons';
 import { VisuallyHidden } from './VisuallyHidden';
+import { BaseButton } from '.';
 
 interface SearchInput {
     placeholder?: string;
@@ -56,12 +57,15 @@ const Wrapper = styled.form`
     }
 `;
 
-const SubmitButton = styled.button`
+const SubmitButton = styled(BaseButton)`
     background-color: inherit;
-    border: none;
-    cursor: pointer;
     padding: 0;
     position: absolute;
     right: 16px;
     top: 8px;
+
+    &:hover,
+    &:active {
+        filter: revert;
+    }
 `;

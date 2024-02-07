@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useRouter } from 'next/navigation';
 
 import { CartIcon } from './icons';
-import { VisuallyHidden } from '.';
+import { BaseButton, VisuallyHidden } from '.';
 import { useCart } from '@/hooks';
 
 export function CartButton() {
@@ -27,12 +27,10 @@ export function CartButton() {
     );
 }
 
-const Wrapper = styled.button`
+const Wrapper = styled(BaseButton)`
     align-items: center;
     background-color: inherit;
-    border: none;
     border-radius: var(--border-radius);
-    cursor: pointer;
     display: flex;
     justify-content: center;
     position: relative;

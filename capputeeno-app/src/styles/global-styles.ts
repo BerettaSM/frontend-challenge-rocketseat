@@ -1,6 +1,6 @@
 'use client';
 
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, keyframes } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
 
@@ -59,4 +59,28 @@ export const GlobalStyles = createGlobalStyle`
         --border-color: #A8A8B3;
         --success-color: #51B853;
     }
+`;
+
+export const bopAnimation = keyframes`
+0% {
+    transform: translateY(0px);
+}
+20% {
+    transform: translateY(-1px);
+}
+21% {
+    transform: translateY(-1px) rotate(-10deg);
+}
+30% {
+    transform: translateY(-1px) rotate(13deg);
+}
+45% {
+    transform: translateY(-1px) rotate(-15deg);
+}
+75% {
+    transform: translateY(-1px) rotate(11deg); 
+}
+100% {
+    transform: translateY(0px) rotate(0deg); 
+}
 `;

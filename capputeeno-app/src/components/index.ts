@@ -1,3 +1,4 @@
+export * from './BaseButton';
 export * from './BackButton';
 export * from './CartButton';
 export * from './CartItemList';
