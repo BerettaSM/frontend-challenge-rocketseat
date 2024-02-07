@@ -14,12 +14,12 @@ export const BaseButton = styled.button`
         transform-origin: center;
     }
 
-    &:hover svg path {
+    &:hover:not(:disabled) svg path {
         animation: ${bopAnimation} 1 2000ms ease alternate forwards;
     }
 
-    &:hover,
-    &:active {
+    &:hover:not(:disabled),
+    &:active:not(:disabled) {
         filter: brightness(0.85);
     }
 `;
