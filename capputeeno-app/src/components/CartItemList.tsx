@@ -1,22 +1,56 @@
 'use client';
 
+import React from 'react';
 import styled from 'styled-components';
 
-import { CartItem } from './CartItem';
+import { CartItem, Modal, Spacer } from './';
 import { useCart } from '@/hooks';
 
 export function CartItemList() {
-    const { products } = useCart();
+    const { products, removeProduct } = useCart();
+    const [isModalOpen, setIsModalOpen] = React.useState(false);
+    
+    const candidateDeletionId = React.useRef('');
 
-    return <Wrapper>
-        {products.map(product => (
-            <CartItem
-                key={product.id}
-                product={product}
-            />
-        ))}
-    </Wrapper>
+    function openModal(id: string) {
+        candidateDeletionId.current = id;
+        setIsModalOpen(true);
+    }
 
+    function closeModal() {
+        setIsModalOpen(false);
+    }
+
+    function handleDelete() {
+        removeProduct(candidateDeletionId.current);
+        closeModal();
+    }
+
+    return (
+        <Wrapper>
+            {products.map((product) => (
+                <CartItem
+                    key={product.id}
+                    product={product}
+                    onDelete={openModal}
+                />
+            ))}
+            <Modal isOpen={isModalOpen} onClose={closeModal}>
+                <Modal.Description>
+                    Excluir o produto do carrinho?
+                </Modal.Description>
+                <Spacer axis='vertical' size={16} />
+                <Modal.Actions>
+                    <Modal.ActionButton mood="danger" onClick={handleDelete}>
+                        Excluir
+                    </Modal.ActionButton>
+                    <Modal.ActionButton mood="primary" onClick={closeModal}>
+                        Cancelar
+                    </Modal.ActionButton>
+                </Modal.Actions>
+            </Modal>
+        </Wrapper>
+    );
 }
 
 const Wrapper = styled.ul`
@@ -26,4 +60,4 @@ const Wrapper = styled.ul`
 
     list-style: none;
     padding: 0;
-`
+`;
