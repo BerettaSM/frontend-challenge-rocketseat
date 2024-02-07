@@ -44,9 +44,9 @@ function compare(
     p1: Product,
     p2: Product,
     sortField: keyof Product,
-    sortOrder: 'DSC' | 'ASC'
+    sortOrder: 'DESC' | 'ASC'
 ) {
-    if (sortOrder === 'DSC') {
+    if (sortOrder === 'DESC') {
         [p1, p2] = [p2, p1];
     }
     if (
@@ -64,7 +64,7 @@ function compare(
 
 type Args = {
     sortField: keyof Product;
-    sortOrder?: 'DSC' | 'ASC';
+    sortOrder?: 'DESC' | 'ASC';
     filter: {
         category: 'mugs' | 't-shirts' | '';
     };
@@ -73,7 +73,7 @@ type Args = {
 const resolvers = {
     Query: {
         allProducts(_: any, args: Args, __: any, ___: any) {
-            const { sortField, sortOrder = 'DSC', filter } = args;
+            const { sortField, sortOrder = 'DESC', filter } = args;
 
             let products = [...allProducts];
 
@@ -82,7 +82,7 @@ const resolvers = {
                     (p) => p.category === filter.category
                 );
             }
-
+            console.log({ args })
             return products.sort((p1, p2) =>
                 compare(p1, p2, sortField, sortOrder)
             );
