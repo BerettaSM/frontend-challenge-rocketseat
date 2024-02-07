@@ -7,6 +7,7 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { ChevronIcon } from './icons';
 import { PriorityType } from '@/types/enums';
 import { useFilter } from '@/hooks';
+import { BaseButton } from '.';
 
 export function FilterByPriority() {
     const { priority, setPriority, setCurrentPage, setSearchTerm } = useFilter();
@@ -45,16 +46,15 @@ export function FilterByPriority() {
     );
 }
 
-const DropdownButton = styled.button`
-    border: none;
-    cursor: pointer;
+const DropdownButton = styled(BaseButton)`
+    border-radius: 4px;
     color: var(--text-dark);
     display: flex;
     justify-content: flex-end;
     font-size: ${14 / 16}rem;
     align-items: center;
     height: 24px;
-    padding: 0;
+    padding: 8px;
 `;
 
 const DropdownContent = styled(DropdownMenu.Content)`
@@ -76,5 +76,6 @@ const DropdownItem = styled(DropdownMenu.Item)`
 
     &:hover {
         outline: none;
+        text-decoration: underline;
     }
 `;
