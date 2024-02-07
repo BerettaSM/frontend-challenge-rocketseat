@@ -82,14 +82,12 @@ const resolvers = {
                     (p) => p.category === filter.category
                 );
             }
-            console.log({ args })
             return products.sort((p1, p2) =>
                 compare(p1, p2, sortField, sortOrder)
             );
         },
         Product(_: any, args: { id: string }, __: any, ___: any) {
-            const prod = allProducts.find((p) => p.id === args.id);
-            return prod;
+            return allProducts.find((p) => p.id === args.id);
         },
     },
     Date: new GraphQLScalarType({
