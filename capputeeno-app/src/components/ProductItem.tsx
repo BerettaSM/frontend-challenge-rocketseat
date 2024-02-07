@@ -75,9 +75,15 @@ const ImageContainer = styled.div`
     position: relative;
     height: 300px;
     overflow: hidden;
-
+    
     & img {
         object-fit: cover;
+        transition: transform 400ms ease-out;
+    }
+
+    &:hover img {
+        transform: scale(1.1);
+        transition-duration: 200ms;
     }
 `;
 
