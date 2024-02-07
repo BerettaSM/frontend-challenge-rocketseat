@@ -75,13 +75,20 @@ export function ProductDescription({ product }: ProductDescriptionProps) {
 
             <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
                 <Modal.Title>
-                    <CheckIcon style={{ color: 'var(--success-color)' }} />
-                    &nbsp; Um novo item foi adicionado no carrinho
+                    <CheckIcon
+                        style={{
+                            color: 'var(--success-color)',
+                            marginInlineEnd: '4px',
+                        }}
+                    />
+                    <span style={{ textAlign: 'center' }}>
+                        &nbsp; Um novo item foi adicionado no carrinho
+                    </span>
                 </Modal.Title>
                 <Spacer axis="vertical" size={16} />
                 <Modal.Description>
-                    Você possui um total de <strong>{quantity}</strong> itens no
-                    carrinho.
+                    Você possui um total de <strong>{quantity}</strong>{' '}
+                    {quantity == 1 ? 'item' : 'itens'} no carrinho.
                 </Modal.Description>
                 <Spacer axis="vertical" size={16} />
                 <Modal.Actions>
@@ -92,7 +99,7 @@ export function ProductDescription({ product }: ProductDescriptionProps) {
                         <BackIcon />
                         &nbsp; Continuar comprando
                     </Modal.ActionButton>
-                    <Spacer axis="horizontal" size={32} />
+                    {/* <Spacer axis="horizontal" size={32} /> */}
                     <Modal.ActionButton
                         style={{ backgroundColor: 'var(--success-color)' }}
                         onClick={() => router.push('/cart')}

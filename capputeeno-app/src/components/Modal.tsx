@@ -64,6 +64,14 @@ const Content = styled(Dialog.Content)`
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+
+    & svg {
+        flex-shrink: 0;
+    }
+
+    @media (max-width: 40rem) {
+        min-width: 90vw;
+    }
 `;
 
 const Title = styled(Dialog.Title)`
@@ -97,6 +105,16 @@ const CloseButton = styled(Dialog.Close)`
 const Actions = styled.div`
     display: flex;
     justify-content: space-between;
+    gap: 16px;
+
+    @media (max-width: 40rem) {
+        justify-content: center;
+    }
+
+    @media (max-width: 25rem) {
+        flex-direction: column;
+        gap: 8px;
+    }
 `;
 
 const ActionButton = styled(BaseButton)`
