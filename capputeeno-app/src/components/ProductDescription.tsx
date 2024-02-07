@@ -93,7 +93,7 @@ export function ProductDescription({ product }: ProductDescriptionProps) {
                 <Spacer axis="vertical" size={16} />
                 <Modal.Actions>
                     <Modal.ActionButton
-                        style={{ backgroundColor: 'var(--brand-color)' }}
+                        mood='primary'
                         onClick={() => router.push('/')}
                     >
                         <BackIcon />
@@ -101,7 +101,7 @@ export function ProductDescription({ product }: ProductDescriptionProps) {
                     </Modal.ActionButton>
                     {/* <Spacer axis="horizontal" size={32} /> */}
                     <Modal.ActionButton
-                        style={{ backgroundColor: 'var(--success-color)' }}
+                        mood='success'
                         onClick={() => router.push('/cart')}
                     >
                         <CartIcon />

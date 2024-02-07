@@ -1,6 +1,7 @@
 export * from './BaseButton';
 export * from './BackButton';
 export * from './CartButton';
+export * from './CartItem';
 export * from './CartItemList';
 export * from './FilterBar';
 export * from './FilterByType';
@@ -15,6 +16,7 @@ export * from './Pagination';
 export * from './ProductDescription';
 export * from './ProductItem';
 export * from './ProductList';
+export * from './QuantitySelect';
 export * from './SearchInput';
 export * from './SkeletonHelper';
 export * from './Spacer';
