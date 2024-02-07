@@ -130,7 +130,7 @@ const ImageContainer = styled.div`
     }
 
     @media (max-width: 40rem) {
-        flex: 1;
+        flex: 1 0 200px;
     }
 `;
 
@@ -177,6 +177,7 @@ const Promotion = styled.span`
 const Description = styled.p`
     font-size: ${14 / 16}rem;
     line-height: 24px;
+    margin-block-end: 24px;
 `;
 
 const AddToCartButton = styled(BaseButton)`
@@ -185,12 +186,21 @@ const AddToCartButton = styled(BaseButton)`
     color: var(--shapes-light);
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 12px;
     padding: 10px;
     margin-block-start: auto;
     text-transform: uppercase;
 
+    & svg {
+        flex-shrink: 0;
+    }
+
     & svg path {
         stroke: var(--shapes-light);
+    }
+
+    @media (max-width: 15rem) {
+        gap: 0px;
     }
 `;

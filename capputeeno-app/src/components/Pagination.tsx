@@ -85,6 +85,7 @@ const Wrapper = styled.ul`
     gap: 2px;
     list-style: none;
     padding: 0;
+    isolation: isolate;
 
     & :first-child {
         margin-inline-start: auto;
