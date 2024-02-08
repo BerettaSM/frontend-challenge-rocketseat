@@ -40,8 +40,18 @@ export function FilterByType() {
 
 const Wrapper = styled.ul`
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     gap: 40px;
     list-style: none;
     padding: 0;
+    position: relative;
+
+    @media (max-width: 40rem) {
+        padding: 16px 0;
+        white-space: nowrap;
+    }
+
+    @media (max-width: 30rem) {
+        display: none;
+    }
 `;

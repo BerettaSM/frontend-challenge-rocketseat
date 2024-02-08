@@ -47,8 +47,9 @@ const Wrapper = styled.header`
         margin-right: auto;
 
         @media (max-width: 40rem) {
-            flex-direction: column;
-            padding-block-end: 16px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            padding-block: 14px 16px;
         }
     }
 `;

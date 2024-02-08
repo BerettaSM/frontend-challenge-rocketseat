@@ -42,6 +42,7 @@ const Wrapper = styled.div`
     }
 
     @media (max-width: 40rem) {
+        height: revert;
         margin-block-start: 2px;
     }
 `;

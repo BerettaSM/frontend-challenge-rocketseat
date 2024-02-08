@@ -41,9 +41,9 @@ const Wrapper = styled.form`
     background-color: var(--bg-secondary);
     border-radius: var(--border-radius);
     height: ${42 / 16}rem;
+    flex: 1 1 352px;
     max-width: 352px;
     position: relative;
-    width: 100%;
 
     & input {
         padding-inline-end: 56px;
@@ -52,8 +52,8 @@ const Wrapper = styled.form`
     }
 
     @media (max-width: 40rem) {
-        max-width: revert;
-        flex: 2;
+        margin: auto;
+        order: 3;
     }
 `;
 

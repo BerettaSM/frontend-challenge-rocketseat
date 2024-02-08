@@ -38,9 +38,8 @@ const Wrapper = styled(BaseButton)`
     min-width: 42px;
 
     @media (max-width: 40rem) {
-        position: absolute;
-        right: 16px;
-        top: 19px;
+        // Optical alignment.
+        transform: translateY(5px);
     }
 `;
 

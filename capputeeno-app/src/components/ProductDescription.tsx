@@ -119,7 +119,7 @@ const Wrapper = styled.section`
     margin-block-end: 32px;
     min-height: 580px;
 
-    @media (max-width: 40rem) {
+    @media (max-width: 60rem) {
         flex-direction: column;
         height: calc(100% - 5rem);
     }
@@ -136,7 +136,7 @@ const ImageContainer = styled.div`
         object-fit: cover;
     }
 
-    @media (max-width: 40rem) {
+    @media (max-width: 60rem) {
         flex: 1 0 200px;
     }
 `;
@@ -206,8 +206,8 @@ const AddToCartButton = styled(BaseButton)`
     & svg path {
         stroke: var(--shapes-light);
     }
-
-    @media (max-width: 15rem) {
-        gap: 0px;
+    
+    @media (max-width: 60rem) {
+        margin-block-end: auto;
     }
 `;
