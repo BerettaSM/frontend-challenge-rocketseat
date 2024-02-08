@@ -1,6 +1,5 @@
 # 🚀 Front end challenge
 
-![GitHub](https://img.shields.io/github/license/BerettaSM/frontend-challenge-rocketseat?style=flat-square)
 ![GitHub top language](https://img.shields.io/github/languages/top/BerettaSM/frontend-challenge-rocketseat)
 ![GitHub repo size](https://img.shields.io/github/repo-size/BerettaSM/frontend-challenge-rocketseat)
 
