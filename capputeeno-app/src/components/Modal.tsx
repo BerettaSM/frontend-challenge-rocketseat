@@ -10,21 +10,29 @@ import React from 'react';
 interface ModalProps {
     isOpen?: boolean;
     onClose?(): void;
+    hideCloseButton?: boolean;
     children: React.ReactNode;
 }
 
-export function Modal({ isOpen, onClose, children }: ModalProps) {
+export function Modal({
+    isOpen,
+    onClose,
+    hideCloseButton,
+    children,
+}: ModalProps) {
     return (
         <Wrapper modal open={isOpen}>
             <Dialog.Portal>
                 <Backdrop>
-                <Content>
-                    {children}
-                    <CloseButton onClick={onClose}>
-                        <CloseIcon />
-                        <VisuallyHidden>Fechar</VisuallyHidden>
-                    </CloseButton>
-                </Content>
+                    <Content>
+                        {children}
+                        {!hideCloseButton && (
+                            <CloseButton onClick={onClose}>
+                                <CloseIcon />
+                                <VisuallyHidden>Fechar</VisuallyHidden>
+                            </CloseButton>
+                        )}
+                    </Content>
                 </Backdrop>
             </Dialog.Portal>
         </Wrapper>
@@ -74,10 +82,10 @@ const Content = styled(Dialog.Content)`
     margin: auto;
     width: calc(min(100%, 24rem) - 16px);
     height: min-content;
-    
+
     animation: ${slideDown} 1 500ms ease-out alternate backwards;
     animation-delay: 500ms;
-    
+
     & svg {
         flex-shrink: 0;
     }
@@ -85,7 +93,6 @@ const Content = styled(Dialog.Content)`
     @media (max-width: 20rem) {
         padding: 8px 12px;
     }
-
 `;
 
 const Title = styled(Dialog.Title)`
@@ -146,13 +153,13 @@ const actionButtonTypes: {
     [K in ActionButtonProps['mood']]: React.CSSProperties;
 } = {
     primary: {
-        backgroundColor: 'var(--brand-color)'
+        backgroundColor: 'var(--brand-color)',
     },
     success: {
-        backgroundColor: 'var(--success-color)'
+        backgroundColor: 'var(--success-color)',
     },
     danger: {
-        backgroundColor: 'var(--delete-color)'
+        backgroundColor: 'var(--delete-color)',
     },
 };
 

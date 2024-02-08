@@ -1,26 +1,46 @@
 'use client';
 
 import React from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import { BaseButton, Spacer } from '.';
+import { BaseButton, Modal, Spacer } from '.';
+import { CheckIcon } from './icons';
 import { formatCurrency } from '@/utils/helpers';
 import { useCart } from '@/hooks/use-cart';
 
 export function OrderSummary() {
+    const [isModalOpen, setIsModalOpen] = React.useState(false);
+    const [redirectTime, setRedirectTime] = React.useState(3);
+    const router = useRouter();
     const { deliveryFee, subtotal, quantity, placeOrder } = useCart();
+
+    const intervalId = React.useRef(0);
 
     function handlePlaceOrder() {
         try {
             placeOrder();
-            alert('Compra efetuada com sucesso! :)');
-        }
-        catch(err) {
-            if(err instanceof Error) {
+            setIsModalOpen(true);
+            triggerRedirect()
+        } catch (err) {
+            if (err instanceof Error) {
                 alert(err.message);
             }
         }
+    }
+
+    React.useEffect(() => {
+        if(redirectTime === 0) {
+            window.clearTimeout(intervalId.current);
+            router.push('/');
+        }
+    }, [redirectTime, router])
+
+    function triggerRedirect() {
+        intervalId.current = window.setInterval(() => {
+            setRedirectTime(p => p - 1);
+       }, 1000);
     }
 
     const isCartEmpty = quantity === 0;
@@ -59,6 +79,25 @@ export function OrderSummary() {
             <Link href={'#'}>Reembolsos</Link>
             <Link href={'#'}>Entregas e frete</Link>
             <Link href={'#'}>Trocas e devoluções</Link>
+            <Modal isOpen={isModalOpen} hideCloseButton>
+                <Modal.Title >
+                    <CheckIcon
+                        style={{
+                            color: 'var(--success-color)',
+                        }}
+                    />
+                    <Spacer axis="horizontal" size={24} />
+                    Pedido efetuado com sucesso.
+                </Modal.Title>
+                <Spacer axis="vertical" size={16} />
+                <Modal.Description style={{ textAlign: 'center' }}>
+                    Redirecionando em{' '}
+                    <strong style={{ color: 'var(--success-color)' }}>
+                        {redirectTime}
+                    </strong>{' '}
+                    segundos.
+                </Modal.Description>
+            </Modal>
         </Wrapper>
     );
 }
@@ -84,7 +123,7 @@ const Wrapper = styled.div`
         margin-block-start: 8px;
 
         &:hover {
-            filter: brightness(.6);
+            filter: brightness(0.6);
         }
     }
 
@@ -101,7 +140,7 @@ const Title = styled.h3`
     line-height: 30px;
 `;
 
-const SummaryWrapper = styled.p<{ $isBold?: boolean; }>`
+const SummaryWrapper = styled.p<{ $isBold?: boolean }>`
     color: var(--text-dark-2);
     display: flex;
     justify-content: space-between;
