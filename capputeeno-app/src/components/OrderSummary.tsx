@@ -67,13 +67,11 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     padding: 16px 24px 24px;
+    flex: 1;
+    height: 700px;
 
     & a:first-of-type {
         margin-block-start: auto;
-    }
-
-    & a:not(:first-of-type) {
-        margin-block-start: 8px;
     }
 
     & a {
@@ -81,13 +79,14 @@ const Wrapper = styled.div`
         font-size: ${14 / 16}rem;
         text-transform: uppercase;
         transition: filter 200ms linear;
+        margin-block-start: 8px;
 
         &:hover {
             filter: brightness(.6);
         }
     }
 
-    @media (max-width: 45rem) {
+    @media (max-width: 60rem) {
         padding-inline: 8px;
     }
 `;
@@ -119,13 +118,10 @@ const PlaceOrderButton = styled(BaseButton)`
     color: var(--shapes-light);
     padding: 10px;
     text-transform: uppercase;
+    margin-block-end: 16px;
 
     &:hover,
     &:active {
         filter: brightness(0.85);
-    }
-
-    @media (max-width: 45rem) {
-        margin-block-end: 16px;
     }
 `;

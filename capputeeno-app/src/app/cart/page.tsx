@@ -43,14 +43,8 @@ const Wrapper = styled.section`
     margin-block: 24px 32px;
     gap: 32px;
 
-
-    & > :last-child {
-        flex: 1;
-        height: 700px;
-    }
-
-    @media (max-width: 45rem) {
-        flex-direction: column-reverse;
+    @media (max-width: 60rem) {
+        flex-direction: column;
     }
 `;
 

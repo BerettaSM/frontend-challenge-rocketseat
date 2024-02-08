@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Image from 'next/image';
 
 import { ProductInCart } from '@/types/models';
-import { QuantitySelect } from './QuantitySelect';
+import { QuantitySelect } from './';
 import { range, formatCurrency } from '@/utils/helpers';
 import { BaseButton, VisuallyHidden } from '.';
 import { TrashIcon } from './icons';
@@ -12,15 +12,15 @@ import { useCart } from '@/hooks';
 
 interface CartItemProps {
     product: ProductInCart;
+    onDelete(id: string): void;
 }
 
-export function CartItem({
-    product: { name, image_url, price_in_cents, quantity, id, description },
-}: CartItemProps) {
-    const { changeProductQuantity, removeProduct, singleProductLimit } = useCart();
+export function CartItem({ product, onDelete }: CartItemProps) {
+    const { name, image_url, price_in_cents, quantity, id, description } = product;
+    const { changeProductQuantity, singleProductLimit } = useCart();
 
     function handleDelete() {
-        removeProduct(id);
+        onDelete(id);
     }
 
     function handleQuantityChange(newValue: number) {
@@ -94,6 +94,7 @@ const CartItemDescription = styled.div`
     display: flex;
     flex-direction: column;
     padding: 16px 16px 24px 32px;
+    width: 100%;
 
     @media (max-width: 40rem) {
         padding: 8px;
@@ -127,7 +128,7 @@ const DeleteButton = styled(BaseButton)`
     padding: 0;
     flex-shrink: 0;
     background-color: inherit;
-    
+
     &:hover,
     &:active {
         filter: revert;
