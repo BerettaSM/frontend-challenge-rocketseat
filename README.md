@@ -1,29 +1,51 @@
-![image](https://user-images.githubusercontent.com/40845824/121069742-3accdb00-c7a4-11eb-87d0-3dc47e433762.png)
-
-
 # 🚀 Front end challenge
 
-Bem-vindo(a). Este é o desafio Front end!
+![GitHub](https://img.shields.io/github/license/BerettaSM/frontend-challenge-rocketseat?style=flat-square)
+![GitHub top language](https://img.shields.io/github/languages/top/BerettaSM/frontend-challenge-rocketseat)
+![GitHub repo size](https://img.shields.io/github/repo-size/BerettaSM/frontend-challenge-rocketseat)
 
-O objetivo deste desafio é avaliar suas habilidades de programação.
-Quando sua solução estiver pronta, basta responder o e-mail que recebeu com o link do seu repo aqui no Github!
-Em seguida, enviaremos o feedback e as instruções dos próximos passos!
+Minha resolução do [desafio frontend da rocketseat](https://github.com/Rocketseat/frontend-challenge).
 
-Caso tenha alguma dúvida, nós estamos disponíveis no email *recrutamento@rocketseat.com.br*
-Bom desafio!
+# 🔗 Projeto online
 
-> ⚠️ **É importante que o seu repo esteja público, caso contrário não iremos conseguir avaliar sua resposta**
+Deploy realizado na vercel, para acessar clique [aqui](https://capputeeno-app-omega.vercel.app/).
+
+# 🖥️ Instalação
+
+### Clone o repositório
+```bash
+git clone https://github.com/BerettaSM/frontend-challenge-rocketseat.git
+```
+
+1. Navegue até a pasta do projeto
+
+```bash
+cd frontend-challenge-rocketseat/capputeeno-app
+```
+
+2. Instale as dependências
+
+```bash
+npm install
+```
+
+3. Inicie o frontend
+```bash
+npm run dev
+```
+
+5. Acesse o seguinte endereço no browser `http://127.0.0.1:3000`
 
 # 🧠 Contexto
 
 ![Protótipo](https://storage.googleapis.com/xesque-dev/challenge-images/prototipo.png?42)
 
 O desafio será implementar um e-commerce para venda de canecas e camisetas que deverá ter as seguintes funcionalidades:
-- [ ] Catálogo de produtos com paginação
-- [ ] Filtragem produtos por categoria
-- [ ] Busca por nome do produto
-- [ ] Adicionar e remover produtos do carrinho
-- [ ] Finalizar compra
+- [X] Catálogo de produtos com paginação
+- [X] Filtragem produtos por categoria
+- [X] Busca por nome do produto
+- [X] Adicionar e remover produtos do carrinho
+- [X] Finalizar compra
 
 ## 📋 Instruções
 
@@ -49,14 +71,3 @@ Além dos requisitos levantados acima, iremos olhar para os seguintes critérios
 - Testes e2e
 - Padrões de código
 - Padrão de commits (_Conventional_)
-
-## 😎 Seria legal
-- Fazer deploy na vercel ou em outro local de sua preferência e disponibilizar um link de visualização, se necessário utilize esse servidor para a API GraphQL:  https://rocketseat-frontend-challenge.herokuapp.com/
-- Testes unitários
-- Utilização de cache do Next.js
-
----
-
-_O desafio acima foi cuidadosamente construído para propósitos de avaliação apenas. Já possuimos uma funcionalidade similar na nossa plataforma._
-
-Made with 💜 at Rocketseat
