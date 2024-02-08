@@ -95,7 +95,7 @@ export function OrderSummary() {
                     <strong style={{ color: 'var(--success-color)' }}>
                         {redirectTime}
                     </strong>{' '}
-                    segundos.
+                    {redirectTime === 1 ? 'segundo' : 'segundos'}.
                 </Modal.Description>
             </Modal>
         </Wrapper>
