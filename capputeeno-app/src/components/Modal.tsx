@@ -23,7 +23,7 @@ export function Modal({
     return (
         <Wrapper modal open={isOpen}>
             <Dialog.Portal>
-                <Backdrop>
+                <Backdrop onClick={onClose}>
                     <Content>
                         {children}
                         {!hideCloseButton && (
