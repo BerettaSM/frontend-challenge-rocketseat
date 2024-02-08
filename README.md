@@ -33,7 +33,7 @@ npm install
 npm run dev
 ```
 
-5. Acesse o seguinte endereço no browser `http://127.0.0.1:3000`
+4. Acesse o seguinte endereço no browser `http://localhost:3000`
 
 # 🧠 Contexto
 
