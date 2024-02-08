@@ -18,7 +18,7 @@ interface ProductDescriptionProps {
 
 export function ProductDescription({ product }: ProductDescriptionProps) {
     const router = useRouter();
-    const { addProduct, quantity } = useCart();
+    const { addProduct, quantity, singleProductLimit } = useCart();
     const [isModalOpen, setIsModalOpen] = React.useState(false);
     const { category, description, name, price_in_cents, image_url } = product;
 
@@ -36,6 +36,8 @@ export function ProductDescription({ product }: ProductDescriptionProps) {
     function handleCloseModal() {
         setIsModalOpen(false);
     }
+
+    const isItemLimitReached = quantity === singleProductLimit;
 
     const formattedPrice = formatCurrency(price_in_cents / 100);
 
@@ -67,9 +69,18 @@ export function ProductDescription({ product }: ProductDescriptionProps) {
                 <h3>Descrição</h3>
                 <Spacer axis="vertical" size={8} />
                 <Description>{description}</Description>
-                <AddToCartButton onClick={handleAddToCart}>
-                    <CartIcon />
-                    Adicionar ao carrinho
+                <AddToCartButton
+                    onClick={handleAddToCart}
+                    disabled={isItemLimitReached}
+                >
+                    {isItemLimitReached ? (
+                        `Limite (${singleProductLimit}) excedido`
+                    ) : (
+                        <>
+                            <CartIcon />
+                            Adicionar ao carrinho
+                        </>
+                    )}
                 </AddToCartButton>
             </Details>
 
@@ -93,7 +104,7 @@ export function ProductDescription({ product }: ProductDescriptionProps) {
                 <Spacer axis="vertical" size={16} />
                 <Modal.Actions>
                     <Modal.ActionButton
-                        mood='primary'
+                        mood="primary"
                         onClick={() => router.push('/')}
                     >
                         <BackIcon />
@@ -101,7 +112,7 @@ export function ProductDescription({ product }: ProductDescriptionProps) {
                     </Modal.ActionButton>
                     {/* <Spacer axis="horizontal" size={32} /> */}
                     <Modal.ActionButton
-                        mood='success'
+                        mood="success"
                         onClick={() => router.push('/cart')}
                     >
                         <CartIcon />
@@ -206,7 +217,7 @@ const AddToCartButton = styled(BaseButton)`
     & svg path {
         stroke: var(--shapes-light);
     }
-    
+
     @media (max-width: 60rem) {
         margin-block-end: auto;
     }
