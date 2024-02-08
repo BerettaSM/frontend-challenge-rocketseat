@@ -48,6 +48,7 @@ export function FilterByPriority() {
 
 const DropdownButton = styled(BaseButton)`
     border-radius: 4px;
+    background-color: inherit;
     color: var(--text-dark);
     display: flex;
     justify-content: flex-end;
