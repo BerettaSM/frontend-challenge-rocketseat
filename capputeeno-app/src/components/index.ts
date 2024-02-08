@@ -20,4 +20,5 @@ export * from './QuantitySelect';
 export * from './SearchInput';
 export * from './SkeletonHelper';
 export * from './Spacer';
+export * from './Spinner';
 export * from './VisuallyHidden';

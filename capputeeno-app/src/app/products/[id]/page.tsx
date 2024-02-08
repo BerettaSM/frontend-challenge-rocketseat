@@ -8,7 +8,7 @@ import {
     ProductDescription,
     Spacer,
 } from '@/components';
-import { Spinner } from '@/components/Spinner';
+import { Spinner } from '@/components';
 import { useProduct } from '@/hooks';
 
 interface ProductPageProps {
