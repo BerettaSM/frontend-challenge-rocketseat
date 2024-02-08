@@ -9,7 +9,7 @@ import { formatCurrency } from '@/utils/helpers';
 import { useCart } from '@/hooks/use-cart';
 
 export function OrderSummary() {
-    const { deliveryFee, subtotal, placeOrder } = useCart();
+    const { deliveryFee, subtotal, quantity, placeOrder } = useCart();
 
     function handlePlaceOrder() {
         try {
@@ -22,6 +22,8 @@ export function OrderSummary() {
             }
         }
     }
+
+    const isCartEmpty = quantity === 0;
 
     const total = subtotal + deliveryFee;
 
@@ -50,7 +52,7 @@ export function OrderSummary() {
                 <span>{formattedTotal}</span>
             </SummaryWrapper>
             <Spacer axis="vertical" size={40} />
-            <PlaceOrderButton onClick={handlePlaceOrder}>
+            <PlaceOrderButton onClick={handlePlaceOrder} disabled={isCartEmpty}>
                 Finalizar a compra
             </PlaceOrderButton>
             <Link href={'#'}>Ajuda</Link>
@@ -119,9 +121,4 @@ const PlaceOrderButton = styled(BaseButton)`
     padding: 10px;
     text-transform: uppercase;
     margin-block-end: 16px;
-
-    &:hover,
-    &:active {
-        filter: brightness(0.85);
-    }
 `;

@@ -14,6 +14,11 @@ export const BaseButton = styled.button`
         transform-origin: center;
     }
 
+    &:disabled {
+        background-color: var(--border-color);
+        cursor: not-allowed;
+    }
+
     &:hover:not(:disabled) svg path {
         animation: ${bopAnimation} 1 2000ms ease alternate forwards;
     }
