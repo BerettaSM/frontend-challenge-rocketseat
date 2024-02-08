@@ -52,6 +52,8 @@ const Wrapper = styled.ul`
     }
 
     @media (max-width: 30rem) {
-        display: none;
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
     }
 `;

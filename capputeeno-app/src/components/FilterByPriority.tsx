@@ -54,6 +54,8 @@ const DropdownButton = styled(BaseButton)`
     justify-content: flex-end;
     font-size: ${14 / 16}rem;
     align-items: center;
+    align-self: flex-end;
+    width: fit-content;
     height: 24px;
     padding: 8px;
 `;
