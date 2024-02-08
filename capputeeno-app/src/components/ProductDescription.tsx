@@ -18,7 +18,7 @@ interface ProductDescriptionProps {
 
 export function ProductDescription({ product }: ProductDescriptionProps) {
     const router = useRouter();
-    const { addProduct, quantity, singleProductLimit } = useCart();
+    const { addProduct, products, quantity, singleProductLimit } = useCart();
     const [isModalOpen, setIsModalOpen] = React.useState(false);
     const { category, description, name, price_in_cents, image_url } = product;
 
@@ -37,7 +37,8 @@ export function ProductDescription({ product }: ProductDescriptionProps) {
         setIsModalOpen(false);
     }
 
-    const isItemLimitReached = quantity === singleProductLimit;
+    const itemQuantity = products.find(p => p.id === product.id)?.quantity || 0;
+    const isItemLimitReached = itemQuantity === singleProductLimit;
 
     const formattedPrice = formatCurrency(price_in_cents / 100);
 
